@@ -73,7 +73,7 @@ export function SearchInput({
             });
         });
 
-        return results.slice(0, 8); // Max 8 suggestions
+        return results.slice(0, 8);
     }, [value, farmers]);
 
     // Close on click outside
@@ -124,6 +124,7 @@ export function SearchInput({
         }
         setIsOpen(false);
         onChange("");
+        inputRef.current?.blur();
 
         // Scroll to results
         setTimeout(() => {
@@ -136,11 +137,11 @@ export function SearchInput({
 
     return (
         <div ref={wrapperRef} className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-black z-10" />
+            <Search className="absolute left-3 md:left-4 top-1/2 h-4 w-4 md:h-5 md:w-5 -translate-y-1/2 text-black z-10" />
             <Input
                 ref={inputRef}
-                placeholder="Søk etter produsent eller produkt..."
-                className="pl-12 h-14 text-lg font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-none focus:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                placeholder="Søk produsent..."
+                className="pl-10 md:pl-12 h-12 md:h-14 text-base md:text-lg font-bold border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] md:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-none focus:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] touch-manipulation"
                 value={value}
                 onChange={(e) => {
                     onChange(e.target.value);
@@ -153,11 +154,11 @@ export function SearchInput({
 
             {/* Dropdown */}
             {isOpen && suggestions.length > 0 && (
-                <div className="absolute top-full left-0 right-0 mt-1 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-50 max-h-80 overflow-y-auto">
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-50 max-h-64 md:max-h-80 overflow-y-auto">
                     {suggestions.map((suggestion, index) => (
                         <button
                             key={`${suggestion.type}-${suggestion.id}`}
-                            className={`w-full px-4 py-3 flex items-center gap-3 text-left hover:bg-gray-100 transition-colors ${
+                            className={`w-full px-3 md:px-4 py-3 md:py-3 flex items-center gap-2 md:gap-3 text-left active:bg-gray-200 transition-colors touch-manipulation ${
                                 index === selectedIndex ? "bg-primary/20" : ""
                             }`}
                             onClick={() => handleSelect(suggestion)}
@@ -168,7 +169,7 @@ export function SearchInput({
                             ) : (
                                 <MapPin className="h-4 w-4 text-gray-500 shrink-0" />
                             )}
-                            <div className="min-w-0">
+                            <div className="min-w-0 flex-1">
                                 <div className="font-bold text-sm truncate">
                                     {suggestion.label}
                                 </div>
@@ -179,7 +180,7 @@ export function SearchInput({
                                 )}
                             </div>
                             {suggestion.type === "product" && (
-                                <span className="ml-auto text-xs bg-primary/20 px-2 py-0.5 rounded font-medium">
+                                <span className="text-xs bg-primary/20 px-2 py-0.5 rounded font-medium shrink-0">
                                     Kategori
                                 </span>
                             )}

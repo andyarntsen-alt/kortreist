@@ -1,8 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { FilterState, ProductType } from "@/types";
-import { X } from "lucide-react";
 
 interface FilterSidebarProps {
     filters: FilterState;
@@ -12,13 +10,17 @@ interface FilterSidebarProps {
     onClose?: () => void;
 }
 
-export function FilterSidebar({ filters, setFilters, className, onClose }: FilterSidebarProps) {
-    const categories: { id: string, label: string }[] = [
-        { id: 'honey', label: 'Honning' },
+export function FilterSidebar({ filters, setFilters, className }: FilterSidebarProps) {
+    const categories: { id: ProductType, label: string }[] = [
+        { id: 'raw_milk', label: 'Råmelk' },
         { id: 'milk', label: 'Melk' },
+        { id: 'honey', label: 'Honning' },
         { id: 'eggs', label: 'Egg' },
         { id: 'meat', label: 'Kjøtt' },
         { id: 'vegetables', label: 'Grønnsaker' },
+        { id: 'cheese', label: 'Ost' },
+        { id: 'fish', label: 'Fisk' },
+        { id: 'bread', label: 'Brød' },
         { id: 'seasonal', label: 'Sesong' },
     ];
 
@@ -32,34 +34,51 @@ export function FilterSidebar({ filters, setFilters, className, onClose }: Filte
         }
     };
 
-    return (
-        <div className={`space-y-8 p-6 border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${className}`}>
-            <div className="flex items-center justify-between lg:hidden border-b-2 border-black pb-4 mb-4">
-                <h3 className="font-black text-xl uppercase">Filter</h3>
-                <Button variant="ghost" size="icon" onClick={onClose}><X className="h-6 w-6 stroke-[3]" /></Button>
-            </div>
+    const clearAll = () => {
+        setFilters({ products: [] });
+    };
 
-            <div>
-                <h3 className="font-black text-lg uppercase mb-4 flex items-center gap-2">
-                    <span className="w-4 h-4 bg-primary border-2 border-black"></span>
+    return (
+        <div className={`space-y-4 p-4 md:p-6 border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${className || ''}`}>
+            <div className="flex items-center justify-between">
+                <h3 className="font-black text-base md:text-lg uppercase flex items-center gap-2">
+                    <span className="w-3 h-3 md:w-4 md:h-4 bg-primary border-2 border-black"></span>
                     Produkter
                 </h3>
-                <div className="space-y-3">
-                    {categories.map((cat) => (
-                        <label key={cat.id} className="flex items-center gap-3 text-sm font-bold cursor-pointer group">
-                            <div className="relative w-6 h-6 border-2 border-black bg-white flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:translate-x-0.5 group-hover:translate-y-0.5 group-hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all">
+                {filters.products.length > 0 && (
+                    <button
+                        onClick={clearAll}
+                        className="text-xs font-bold text-gray-500 hover:text-black underline touch-manipulation"
+                    >
+                        Nullstill
+                    </button>
+                )}
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-3">
+                {categories.map((cat) => {
+                    const isSelected = filters.products?.includes(cat.id);
+                    return (
+                        <label
+                            key={cat.id}
+                            className={`flex items-center gap-2 md:gap-3 p-2.5 md:p-2 text-sm font-bold cursor-pointer border-2 border-black transition-all touch-manipulation ${
+                                isSelected
+                                    ? "bg-primary shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                                    : "bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5"
+                            }`}
+                        >
+                            <div className={`relative w-5 h-5 md:w-6 md:h-6 border-2 border-black bg-white flex items-center justify-center flex-shrink-0`}>
                                 <input
                                     type="checkbox"
                                     className="peer appearance-none w-full h-full cursor-pointer"
-                                    checked={filters.products?.includes(cat.id as ProductType)}
-                                    onChange={() => toggleCategory(cat.id as ProductType)}
+                                    checked={isSelected}
+                                    onChange={() => toggleCategory(cat.id)}
                                 />
-                                <div className="absolute inset-0 bg-black hidden peer-checked:block m-1"></div>
+                                <div className="absolute inset-0 bg-black hidden peer-checked:block m-0.5 md:m-1"></div>
                             </div>
-                            {cat.label}
+                            <span className="truncate">{cat.label}</span>
                         </label>
-                    ))}
-                </div>
+                    );
+                })}
             </div>
         </div>
     );

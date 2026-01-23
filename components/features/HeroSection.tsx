@@ -12,7 +12,7 @@ const categories: { id: ProductType; label: string; icon: typeof Droplets; color
     { id: "bread", label: "Brød", icon: Cookie, color: "bg-[#DEB887] text-black" },
     { id: "eggs", label: "Egg", icon: Egg, color: "bg-[#FFA500] text-black" },
     { id: "meat", label: "Kjøtt", icon: Beef, color: "bg-[#FF90E8] text-black" },
-    { id: "vegetables", label: "Grønnsaker", icon: Wheat, color: "bg-[#CCFF00] text-black" },
+    { id: "vegetables", label: "Grønt", icon: Wheat, color: "bg-[#CCFF00] text-black" },
     { id: "cheese", label: "Ost", icon: Milk, color: "bg-[#FFE4B5] text-black" },
     { id: "fish", label: "Fisk", icon: Fish, color: "bg-[#00D2FF] text-black" },
 ];
@@ -64,25 +64,30 @@ export function HeroSection({
     };
 
     return (
-        <div className="relative overflow-hidden bg-background border-b-2 border-black pt-20 pb-16 md:pt-32 md:pb-24">
-            {/* Decorative Elements */}
+        <div className="relative overflow-hidden bg-background border-b-2 border-black pt-6 pb-8 md:pt-20 md:pb-16">
+            {/* Decorative Elements - Desktop only */}
             <div className="absolute top-10 left-10 w-16 h-16 bg-primary border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-12 hidden lg:block" />
             <div className="absolute top-20 right-20 w-12 h-12 bg-secondary border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -rotate-12 hidden lg:block" />
 
             <div className="container px-4 md:px-6 mx-auto relative z-10">
-                <div className="mx-auto max-w-4xl text-center space-y-8">
-                    <div className="inline-block bg-[#FF6B6B] border-2 border-black px-4 py-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform -rotate-2 mb-4">
-                        <span className="text-sm font-bold uppercase tracking-widest text-white">Dyre butikker? Nei takk</span>
+                <div className="mx-auto max-w-4xl text-center space-y-4 md:space-y-8">
+                    {/* Badge */}
+                    <div className="inline-block bg-[#FF6B6B] border-2 border-black px-3 py-1 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] md:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform -rotate-2">
+                        <span className="text-xs md:text-sm font-bold uppercase tracking-widest text-white">Dyre butikker? Nei takk</span>
                     </div>
 
-                    <h1 className="text-5xl font-black tracking-tight sm:text-7xl md:text-8xl text-foreground uppercase leading-[0.9]">
-                        Ekte <span className="text-primary italic">mat</span> fra ekte<br /> bønder
+                    {/* Main Heading - Mobile optimized */}
+                    <h1 className="text-4xl font-black tracking-tight sm:text-5xl md:text-7xl lg:text-8xl text-foreground uppercase leading-[0.9]">
+                        Ekte <span className="text-primary italic">mat</span><br className="sm:hidden" /> fra<br className="hidden sm:block" /> ekte bønder
                     </h1>
-                    <p className="text-xl font-bold font-mono md:text-2xl max-w-2xl mx-auto bg-white border-2 border-black p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                        Dropp de dyre dagligvarekjedene. Finn råmelk, lokalhonning, hjemmebakt brød og ferskt kjøtt - direkte fra bonden.
+
+                    {/* Tagline - Compact on mobile */}
+                    <p className="text-base md:text-xl lg:text-2xl font-bold font-mono max-w-2xl mx-auto bg-white border-2 border-black p-3 md:p-4 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] md:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                        <span className="hidden sm:inline">Dropp de dyre dagligvarekjedene. </span>Finn råmelk, honning, brød og kjøtt - direkte fra bonden.
                     </p>
 
-                    <div className="relative mx-auto mt-10 max-w-xl">
+                    {/* Search Input - Full width on mobile */}
+                    <div className="relative mx-auto mt-6 md:mt-10 max-w-xl">
                         <SearchInput
                             value={searchQuery}
                             onChange={(val) => onSearchChange?.(val)}
@@ -92,13 +97,13 @@ export function HeroSection({
                         />
                     </div>
 
-                    {/* Find Near Me Button */}
-                    <div className="mt-6 flex justify-center">
+                    {/* Find Near Me Button - Touch friendly */}
+                    <div className="mt-4 md:mt-6 flex justify-center">
                         <Button
                             size="lg"
                             onClick={onFindNearMe}
                             disabled={isLocating}
-                            className="h-12 px-6 bg-[#90EE90] text-black hover:bg-[#7CCD7C] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1 disabled:opacity-50"
+                            className="h-12 md:h-14 px-6 md:px-8 text-sm md:text-base bg-[#90EE90] text-black hover:bg-[#7CCD7C] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1 active:translate-y-1 disabled:opacity-50 touch-manipulation"
                         >
                             {isLocating ? (
                                 <Loader2 className="mr-2 h-5 w-5 animate-spin" />
@@ -109,25 +114,28 @@ export function HeroSection({
                         </Button>
                     </div>
 
-                    <div className="mt-8 flex flex-wrap justify-center gap-3">
-                        {categories.map((cat) => {
-                            const isActive = activeCategories.includes(cat.id);
-                            return (
-                                <button
-                                    key={cat.id}
-                                    onClick={() => handleCategoryClick(cat.id)}
-                                    className={`flex items-center gap-2 px-5 py-2.5 text-sm font-bold uppercase border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-y-0 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] ${cat.color} ${isActive ? "ring-4 ring-black ring-offset-2" : ""}`}
-                                >
-                                    <cat.icon className="h-4 w-4 stroke-[2.5]" />
-                                    {cat.label}
-                                </button>
-                            );
-                        })}
+                    {/* Categories - Horizontal scroll on mobile */}
+                    <div className="mt-6 md:mt-8 -mx-4 md:mx-0">
+                        <div className="flex md:flex-wrap md:justify-center gap-2 md:gap-3 overflow-x-auto scrollbar-hide px-4 md:px-0 pb-2 md:pb-0 snap-x snap-mandatory">
+                            {categories.map((cat) => {
+                                const isActive = activeCategories.includes(cat.id);
+                                return (
+                                    <button
+                                        key={cat.id}
+                                        onClick={() => handleCategoryClick(cat.id)}
+                                        className={`flex-shrink-0 snap-start flex items-center gap-1.5 md:gap-2 px-3 md:px-5 py-2 md:py-2.5 text-xs md:text-sm font-bold uppercase border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] md:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-y-0 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] touch-manipulation ${cat.color} ${isActive ? "ring-2 md:ring-4 ring-black ring-offset-1 md:ring-offset-2" : ""}`}
+                                    >
+                                        <cat.icon className="h-4 w-4 stroke-[2.5]" />
+                                        {cat.label}
+                                    </button>
+                                );
+                            })}
+                        </div>
                     </div>
 
-                    {/* Scroll hint */}
-                    <div className="mt-8 animate-bounce">
-                        <ChevronDown className="h-6 w-6 mx-auto text-gray-400" />
+                    {/* Scroll hint - Smaller on mobile */}
+                    <div className="mt-4 md:mt-8 animate-bounce">
+                        <ChevronDown className="h-5 w-5 md:h-6 md:w-6 mx-auto text-gray-400" />
                     </div>
                 </div>
             </div>
