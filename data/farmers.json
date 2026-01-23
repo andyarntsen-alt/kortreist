@@ -2490,7 +2490,7 @@
       },
       "address": "Nes i Akershus",
       "images": [
-        "https://www.nyr.no/wp-content/uploads/2020/03/nyr_produkt.jpg"
+        "https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=800"
       ]
     },
     {
@@ -2509,7 +2509,7 @@
       },
       "address": "Sandåsveien 95, 1746 Skjeberg",
       "images": [
-        "https://delasgard.no/wp-content/uploads/2021/05/jersey-ku.jpg"
+        "https://images.unsplash.com/photo-1595981234058-a9302fb97229?w=800"
       ]
     },
     {
@@ -2526,7 +2526,7 @@
       },
       "address": "Stasjonsveien 2, Rygge",
       "images": [
-        "https://www.ryggemeieri.no/images/meieriet.jpg"
+        "https://images.unsplash.com/photo-1559598467-f8b76c8155d0?w=800"
       ]
     },
     {
@@ -2545,7 +2545,7 @@
       },
       "address": "Undrumsdal, Vestfold",
       "images": [
-        "https://holtgard.no/wp-content/uploads/meieri.jpg"
+        "https://images.unsplash.com/photo-1623653387945-2fd25214f8fc?w=800"
       ]
     },
     {
@@ -2562,7 +2562,7 @@
       },
       "address": "Trøndelag",
       "images": [
-        "https://kilnesgard.no/wp-content/uploads/melkebua.jpg"
+        "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=800"
       ]
     },
     {
@@ -2597,7 +2597,7 @@
       },
       "address": "Valdres",
       "images": [
-        "/placeholder-farm.jpg"
+        "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=800"
       ]
     },
     {
@@ -2615,6 +2615,41 @@
       "address": "Akershus",
       "images": [
         "/placeholder-farm.jpg"
+      ]
+    },
+    {
+      "id": "skaarbu-gard",
+      "name": "Skaarbu Gård",
+      "description": "Økologisk gård i Holmestrand som selger ubehandlet rå melk, melkeprodukter, egg og kjøtt. Leverer til flere melkeringer i Oslo-området.",
+      "products": [
+        "raw_milk",
+        "milk",
+        "eggs",
+        "meat"
+      ],
+      "location": {
+        "lat": 59.4892,
+        "lng": 10.3167
+      },
+      "address": "Holmestrand, Vestfold",
+      "images": [
+        "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=800"
+      ]
+    },
+    {
+      "id": "melkering-oslo",
+      "name": "Melkering Oslo (via Tradisjonsmat)",
+      "description": "Organisert melkering i Oslo som henter fersk rå melk fra økobonde hver onsdag. Kontakt via Facebook-gruppen Tradisjonsmat Oslo for å bli medlem.",
+      "products": [
+        "raw_milk"
+      ],
+      "location": {
+        "lat": 59.9139,
+        "lng": 10.7522
+      },
+      "address": "Oslo (ulike hentesteder)",
+      "images": [
+        "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=800"
       ]
     }
   ]
