@@ -8,7 +8,7 @@ import { Lightbulb, Check, Loader2 } from "lucide-react";
 import { useState } from "react";
 
 // BYTT UT MED DIN FORMSPREE ID (fra formspree.io)
-const FORMSPREE_ID = "xpwzgvkz";
+const FORMSPREE_ID = "xkojqnoj";
 
 export default function TipsPage() {
     const [submitted, setSubmitted] = useState(false);
