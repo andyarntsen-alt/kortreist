@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Neo-Brutalist Palette */
+  --background: #FFFDF5;
+  /* Cream */
+  --foreground: #000000;
+  /* Pitch Black */
+
+  /* Brand Colors - High Contrast */
+  --primary: #FF90E8;
+  /* Hot Pink */
+  --primary-foreground: #000000;
+
+  --secondary: #00D2FF;
+  /* Cyan */
+  --secondary-foreground: #000000;
+
+  --accent: #CCFF00;
+  /* Lime */
+  --accent-foreground: #000000;
+
+  --muted: #E0E0E0;
+  --muted-foreground: #404040;
+
+  --card: #FFFFFF;
+  --card-foreground: #000000;
+
+  --border: #000000;
+  --radius: 0px;
+  /* Hard corners by default or very slight */
+
+  --shadow-hard: 4px 4px 0px 0px #000000;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-border: var(--border);
+
+  --radius-none: 0px;
+  --radius-sm: 0.25rem;
+
+  --shadow-hard: var(--shadow-hard);
+
+  --font-sans: var(--font-courier), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  border-width: 0px;
 }

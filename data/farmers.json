@@ -1,0 +1,294 @@
+{
+    "farmers": [
+        {
+            "id": "grini-hjemmebakeri",
+            "name": "Grini Hjemmebakeri",
+            "description": "Kransekaker, hjemmebakst og lokalmat i en sjarmerende gårdsbutikk på Grini gård. Åpent hele året.",
+            "products": ["seasonal", "eggs"],
+            "location": {
+                "lat": 59.9467,
+                "lng": 10.6089
+            },
+            "address": "Griniveien 159, 1359 Eiksmarka",
+            "images": ["https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800"]
+        },
+        {
+            "id": "haneborg-gard",
+            "name": "Haneborg Gård (Tomtermais)",
+            "description": "Over 60 egenproduserte grønnsaker, selvplukk av mais, bønner og gulrøtter. Usprøytet. Åpent hele året.",
+            "products": ["vegetables", "potatoes", "seasonal"],
+            "location": {
+                "lat": 59.7211,
+                "lng": 10.6297
+            },
+            "address": "Osloveien 160, 1449 Drøbak",
+            "images": ["https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800"]
+        },
+        {
+            "id": "dyster-gard",
+            "name": "Dyster Gård",
+            "description": "Kortreist kvalitetskjøtt av storfe og frilandsgris. Eget gårdsslakteri. Åpent torsdag og fredag 14-18.",
+            "products": ["meat", "sausages"],
+            "location": {
+                "lat": 59.6608,
+                "lng": 10.7892
+            },
+            "address": "Dysterveien, 1430 Ås",
+            "images": ["https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800"]
+        },
+        {
+            "id": "vulkanfisk",
+            "name": "Vulkanfisk",
+            "description": "Fersk sjømat av høyeste kvalitet i Mathallen. Sjømatbar og butikk med dagens fangst.",
+            "products": ["fish", "shellfish"],
+            "location": {
+                "lat": 59.9225,
+                "lng": 10.7520
+            },
+            "address": "Vulkan 5, 0178 Oslo",
+            "images": ["https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?w=800"]
+        },
+        {
+            "id": "oslo-fiskehall",
+            "name": "Oslo Fiskehall",
+            "description": "Markedsplass for fersk fisk og sjømat på Vippetangen. Grossist og detaljhandel.",
+            "products": ["fish", "shellfish"],
+            "location": {
+                "lat": 59.9035,
+                "lng": 10.7412
+            },
+            "address": "Akershustranda 23, 0150 Oslo",
+            "images": ["https://images.unsplash.com/photo-1498654200943-1088dd4438ae?w=800"]
+        },
+        {
+            "id": "saetrehonning",
+            "name": "Sætrehonning",
+            "description": "Kortreist lokal honning fra Asker og Bærum. Levering på døra og på Bondens Marked.",
+            "products": ["honey", "beeswax"],
+            "location": {
+                "lat": 59.8350,
+                "lng": 10.4350
+            },
+            "address": "Asker",
+            "images": ["https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800"]
+        },
+        {
+            "id": "vulkanbier",
+            "name": "Vulkanbier",
+            "description": "Urban honning fra bikuber på taket av Mathallen. Selges hos Gutta på Haugen.",
+            "products": ["honey"],
+            "location": {
+                "lat": 59.9228,
+                "lng": 10.7515
+            },
+            "address": "Mathallen, Vulkan, 0178 Oslo",
+            "images": ["https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800"]
+        },
+        {
+            "id": "lindholm-gard",
+            "name": "Lindholm Gård",
+            "description": "Økologiske egg fra beitehøns med soyafritt fôr. Mobilt hønsehus flyttes annenhver dag.",
+            "products": ["eggs"],
+            "location": {
+                "lat": 59.7800,
+                "lng": 10.8200
+            },
+            "address": "Follo",
+            "images": ["https://images.unsplash.com/photo-1569288052389-dac9b01c9c05?w=800"]
+        },
+        {
+            "id": "beite-hvam",
+            "name": "Beite - Gårdsbutikken på Hvam",
+            "description": "Gårdsbutikk på Hvam videregående skole med lokalprodusert mat og meieriprodukter.",
+            "products": ["milk", "cheese", "meat", "vegetables"],
+            "location": {
+                "lat": 60.0089,
+                "lng": 11.1456
+            },
+            "address": "Hvam, 2165 Hvam",
+            "images": ["https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=800"]
+        },
+        {
+            "id": "bondens-marked-grunerlokka",
+            "name": "Bondens Marked Grünerløkka",
+            "description": "Lørdagsmarked med lokale bønder. Ost, kjøtt, grønnsaker, honning og bakervarer direkte fra produsent.",
+            "products": ["vegetables", "meat", "cheese", "honey", "eggs"],
+            "location": {
+                "lat": 59.9227,
+                "lng": 10.7589
+            },
+            "address": "Birkelunden, 0561 Oslo",
+            "images": ["https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=800"]
+        },
+        {
+            "id": "bondens-marked-majorstuen",
+            "name": "Bondens Marked Majorstuen",
+            "description": "Ukentlig marked på Valkyrie plass. Kortreist mat fra lokale produsenter i Oslo-området.",
+            "products": ["vegetables", "meat", "cheese", "honey", "seasonal"],
+            "location": {
+                "lat": 59.9298,
+                "lng": 10.7128
+            },
+            "address": "Valkyrie plass, 0366 Oslo",
+            "images": ["https://images.unsplash.com/photo-1542838132-92c53300491e?w=800"]
+        },
+        {
+            "id": "fjelberg-fisk",
+            "name": "Fjelberg Fisk og Vilt",
+            "description": "Delikatessebutikk med fersk fisk, sjømat og viltkjøtt av høyeste kvalitet.",
+            "products": ["fish", "meat"],
+            "location": {
+                "lat": 59.9170,
+                "lng": 10.7280
+            },
+            "address": "Oslo sentrum",
+            "images": ["https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800"]
+        },
+        {
+            "id": "annis-polsemakeri",
+            "name": "Annis Pølsemakeri",
+            "description": "Håndlagde pølser og kjøttprodukter. Butikk i Mathallen og Oslobukta.",
+            "products": ["meat", "sausages"],
+            "location": {
+                "lat": 59.9220,
+                "lng": 10.7510
+            },
+            "address": "Mathallen, Vulkan 5, 0178 Oslo",
+            "images": ["https://images.unsplash.com/photo-1504973960431-1c467e159aa4?w=800"]
+        },
+        {
+            "id": "bamsrudlaven",
+            "name": "Bamsrudlåven",
+            "description": "Gårdsis laget av naboens melk og egne frittgående høner. Kafé og gårdsbutikk.",
+            "products": ["milk", "eggs", "seasonal"],
+            "location": {
+                "lat": 59.5789,
+                "lng": 11.3456
+            },
+            "address": "Mysen",
+            "images": ["https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=800"]
+        },
+        {
+            "id": "bestefarhuset",
+            "name": "BesteFarHuset",
+            "description": "En av Norges koseligste kaféer i Blaker, med lokalmat og hjemmebakst over to etasjer.",
+            "products": ["seasonal", "eggs"],
+            "location": {
+                "lat": 59.9650,
+                "lng": 11.2100
+            },
+            "address": "Blaker, Lillestrøm",
+            "images": ["https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800"]
+        },
+        {
+            "id": "mathallen-oslo",
+            "name": "Mathallen Oslo",
+            "description": "Mathall med over 30 spesialbutikker. Ost, kjøtt, fisk, bakeri og lokale delikatesser.",
+            "products": ["cheese", "meat", "fish", "seasonal"],
+            "location": {
+                "lat": 59.9222,
+                "lng": 10.7518
+            },
+            "address": "Vulkan 5, 0178 Oslo",
+            "images": ["https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800"]
+        },
+        {
+            "id": "gutta-pa-haugen",
+            "name": "Gutta på Haugen",
+            "description": "Norsk ost og spekemat av høyeste kvalitet. Eksperter på lokalmat i Mathallen.",
+            "products": ["cheese", "meat"],
+            "location": {
+                "lat": 59.9224,
+                "lng": 10.7516
+            },
+            "address": "Mathallen, Vulkan 5, 0178 Oslo",
+            "images": ["https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=800"]
+        },
+        {
+            "id": "rostadt-gronnsaker",
+            "name": "Røstad Grønnsaker",
+            "description": "Økologiske grønnsaker fra gården på Nesodden. Selvplukk i sesong.",
+            "products": ["vegetables", "potatoes", "seasonal"],
+            "location": {
+                "lat": 59.8200,
+                "lng": 10.6500
+            },
+            "address": "Nesodden",
+            "images": ["https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800"]
+        },
+        {
+            "id": "kolbotn-torg-marked",
+            "name": "Bondens Marked Kolbotn",
+            "description": "Lokalt marked på Kolbotn Torg med ferske råvarer fra bønder i Follo.",
+            "products": ["vegetables", "eggs", "honey", "seasonal"],
+            "location": {
+                "lat": 59.8100,
+                "lng": 10.8000
+            },
+            "address": "Kolbotn Torg, 1410 Kolbotn",
+            "images": ["https://images.unsplash.com/photo-1534483509719-3feaee7c30da?w=800"]
+        },
+        {
+            "id": "asker-marked",
+            "name": "Bondens Marked Asker",
+            "description": "Marked i Asker sentrum med lokale produsenter fra Asker og Bærum.",
+            "products": ["vegetables", "honey", "eggs", "meat"],
+            "location": {
+                "lat": 59.8333,
+                "lng": 10.4350
+            },
+            "address": "Asker sentrum",
+            "images": ["https://images.unsplash.com/photo-1550989460-0adf9ea622e2?w=800"]
+        },
+        {
+            "id": "holt-gard",
+            "name": "Holt Gård",
+            "description": "Jarlsbergkuene gir fersk rå melk som bearbeides til yoghurt og kvarg. Kontakt for bestilling av meieriprodukter.",
+            "products": ["raw_milk", "milk", "cheese"],
+            "location": {
+                "lat": 59.3725,
+                "lng": 10.3156
+            },
+            "address": "Holtveien 41, 3080 Holmestrand",
+            "website": "https://holtgard.no",
+            "images": ["https://images.unsplash.com/photo-1550583724-b2692b85b150?w=800"]
+        },
+        {
+            "id": "kilnesgard",
+            "name": "Kilnesgård",
+            "description": "Pasteurisert, ikke-homogenisert melk som bevarer naturlige egenskaper. Brunostkrem og yoghurt. Melk på bestilling.",
+            "products": ["milk", "cheese"],
+            "location": {
+                "lat": 59.7456,
+                "lng": 10.2134
+            },
+            "address": "Kilnes, 3490 Klokkarstua",
+            "website": "https://kilnesgard.no",
+            "images": ["https://images.unsplash.com/photo-1563636619-e9143da7973b?w=800"]
+        },
+        {
+            "id": "grøstad-gård",
+            "name": "Grøstad Gård",
+            "description": "Økologisk gård med melkeproduksjon. Ku på beite hele sommeren. Rå melk tilgjengelig for medlemmer av melkering.",
+            "products": ["raw_milk", "milk", "meat"],
+            "location": {
+                "lat": 59.6234,
+                "lng": 10.7891
+            },
+            "address": "Vestby",
+            "images": ["https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=800"]
+        },
+        {
+            "id": "tingvoll-gård",
+            "name": "Tingvoll Gård",
+            "description": "Gårdsmeieri med upasteurisert ost laget av egen melk. Melkeringer for rå melk.",
+            "products": ["raw_milk", "cheese", "milk"],
+            "location": {
+                "lat": 59.8912,
+                "lng": 10.5678
+            },
+            "address": "Bærum",
+            "images": ["https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=800"]
+        }
+    ]
+}
