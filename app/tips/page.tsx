@@ -4,11 +4,15 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Lightbulb, Check } from "lucide-react";
+import { Lightbulb, Check, Loader2 } from "lucide-react";
 import { useState } from "react";
+
+// BYTT UT MED DIN FORMSPREE ID (fra formspree.io)
+const FORMSPREE_ID = "xpwzgvkz";
 
 export default function TipsPage() {
     const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         producerName: "",
         products: "",
@@ -18,11 +22,32 @@ export default function TipsPage() {
         yourEmail: ""
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // In production, this would send to an API/email
-        console.log("Tip submitted:", formData);
-        setSubmitted(true);
+        setLoading(true);
+
+        try {
+            const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    "Produsentens navn": formData.producerName,
+                    "Produkter": formData.products,
+                    "Lokasjon": formData.location,
+                    "Nettside": formData.website || "Ikke oppgitt",
+                    "Tipserens navn": formData.yourName || "Anonym",
+                    "Tipserens e-post": formData.yourEmail || "Ikke oppgitt"
+                })
+            });
+
+            if (response.ok) {
+                setSubmitted(true);
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -155,9 +180,10 @@ export default function TipsPage() {
 
                                     <Button
                                         type="submit"
-                                        className="w-full h-12 text-lg font-bold uppercase bg-[#FFD700] text-black border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5"
+                                        disabled={loading}
+                                        className="w-full h-12 text-lg font-bold uppercase bg-[#FFD700] text-black border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 disabled:opacity-50"
                                     >
-                                        Send tips
+                                        {loading ? <><Loader2 className="h-5 w-5 animate-spin mr-2" /> Sender...</> : "Send tips"}
                                     </Button>
                                 </div>
                             </form>
