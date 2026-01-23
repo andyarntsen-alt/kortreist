@@ -19,10 +19,6 @@ import { getProductLabel } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
 import { SlidersHorizontal } from "lucide-react";
 
-const initialFilters: FilterState = {
-  products: []
-};
-
 function HomeContent() {
   const searchParams = useSearchParams();
   const filterParam = searchParams.get("filter") as ProductType | null;
@@ -32,10 +28,21 @@ function HomeContent() {
   }));
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
-  const [farmers, setFarmers] = useState<Farmer[]>(rawData.farmers as Farmer[]);
   const [userLocation, setUserLocation] = useState<Location | null>(null);
   const [isLoadingMore, setIsLoadingMore] = useState(true);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const [apiFarmers, setApiFarmers] = useState<Farmer[]>([]);
+
+  // Local data is always available immediately
+  const localFarmers = rawData.farmers as Farmer[];
+
+  // Merge local + API farmers (API data takes priority for duplicates)
+  const farmers = useMemo(() => {
+    if (apiFarmers.length === 0) return localFarmers;
+    const apiIds = new Set(apiFarmers.map(f => f.id));
+    const uniqueLocal = localFarmers.filter(f => !apiIds.has(f.id));
+    return [...apiFarmers, ...uniqueLocal];
+  }, [localFarmers, apiFarmers]);
 
   const { location: geoLocation, loading: isLocating, error: geoError, requestLocation } = useGeolocation();
 
@@ -103,9 +110,7 @@ function HomeContent() {
         const data = await res.json();
 
         if (data.farmers && data.farmers.length > 0) {
-          const apiIds = new Set(data.farmers.map((f: Farmer) => f.id));
-          const localFarmers = (rawData.farmers as Farmer[]).filter(f => !apiIds.has(f.id));
-          setFarmers([...data.farmers, ...localFarmers]);
+          setApiFarmers(data.farmers);
         }
       } catch {
         // Silently fail - we already have local data
