@@ -1,294 +1,2480 @@
 {
-    "farmers": [
-        {
-            "id": "grini-hjemmebakeri",
-            "name": "Grini Hjemmebakeri",
-            "description": "Kransekaker, hjemmebakst og lokalmat i en sjarmerende gårdsbutikk på Grini gård. Åpent hele året.",
-            "products": ["seasonal", "eggs"],
-            "location": {
-                "lat": 59.9467,
-                "lng": 10.6089
-            },
-            "address": "Griniveien 159, 1359 Eiksmarka",
-            "images": ["https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800"]
-        },
-        {
-            "id": "haneborg-gard",
-            "name": "Haneborg Gård (Tomtermais)",
-            "description": "Over 60 egenproduserte grønnsaker, selvplukk av mais, bønner og gulrøtter. Usprøytet. Åpent hele året.",
-            "products": ["vegetables", "potatoes", "seasonal"],
-            "location": {
-                "lat": 59.7211,
-                "lng": 10.6297
-            },
-            "address": "Osloveien 160, 1449 Drøbak",
-            "images": ["https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800"]
-        },
-        {
-            "id": "dyster-gard",
-            "name": "Dyster Gård",
-            "description": "Kortreist kvalitetskjøtt av storfe og frilandsgris. Eget gårdsslakteri. Åpent torsdag og fredag 14-18.",
-            "products": ["meat", "sausages"],
-            "location": {
-                "lat": 59.6608,
-                "lng": 10.7892
-            },
-            "address": "Dysterveien, 1430 Ås",
-            "images": ["https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800"]
-        },
-        {
-            "id": "vulkanfisk",
-            "name": "Vulkanfisk",
-            "description": "Fersk sjømat av høyeste kvalitet i Mathallen. Sjømatbar og butikk med dagens fangst.",
-            "products": ["fish", "shellfish"],
-            "location": {
-                "lat": 59.9225,
-                "lng": 10.7520
-            },
-            "address": "Vulkan 5, 0178 Oslo",
-            "images": ["https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?w=800"]
-        },
-        {
-            "id": "oslo-fiskehall",
-            "name": "Oslo Fiskehall",
-            "description": "Markedsplass for fersk fisk og sjømat på Vippetangen. Grossist og detaljhandel.",
-            "products": ["fish", "shellfish"],
-            "location": {
-                "lat": 59.9035,
-                "lng": 10.7412
-            },
-            "address": "Akershustranda 23, 0150 Oslo",
-            "images": ["https://images.unsplash.com/photo-1498654200943-1088dd4438ae?w=800"]
-        },
-        {
-            "id": "saetrehonning",
-            "name": "Sætrehonning",
-            "description": "Kortreist lokal honning fra Asker og Bærum. Levering på døra og på Bondens Marked.",
-            "products": ["honey", "beeswax"],
-            "location": {
-                "lat": 59.8350,
-                "lng": 10.4350
-            },
-            "address": "Asker",
-            "images": ["https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800"]
-        },
-        {
-            "id": "vulkanbier",
-            "name": "Vulkanbier",
-            "description": "Urban honning fra bikuber på taket av Mathallen. Selges hos Gutta på Haugen.",
-            "products": ["honey"],
-            "location": {
-                "lat": 59.9228,
-                "lng": 10.7515
-            },
-            "address": "Mathallen, Vulkan, 0178 Oslo",
-            "images": ["https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800"]
-        },
-        {
-            "id": "lindholm-gard",
-            "name": "Lindholm Gård",
-            "description": "Økologiske egg fra beitehøns med soyafritt fôr. Mobilt hønsehus flyttes annenhver dag.",
-            "products": ["eggs"],
-            "location": {
-                "lat": 59.7800,
-                "lng": 10.8200
-            },
-            "address": "Follo",
-            "images": ["https://images.unsplash.com/photo-1569288052389-dac9b01c9c05?w=800"]
-        },
-        {
-            "id": "beite-hvam",
-            "name": "Beite - Gårdsbutikken på Hvam",
-            "description": "Gårdsbutikk på Hvam videregående skole med lokalprodusert mat og meieriprodukter.",
-            "products": ["milk", "cheese", "meat", "vegetables"],
-            "location": {
-                "lat": 60.0089,
-                "lng": 11.1456
-            },
-            "address": "Hvam, 2165 Hvam",
-            "images": ["https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=800"]
-        },
-        {
-            "id": "bondens-marked-grunerlokka",
-            "name": "Bondens Marked Grünerløkka",
-            "description": "Lørdagsmarked med lokale bønder. Ost, kjøtt, grønnsaker, honning og bakervarer direkte fra produsent.",
-            "products": ["vegetables", "meat", "cheese", "honey", "eggs"],
-            "location": {
-                "lat": 59.9227,
-                "lng": 10.7589
-            },
-            "address": "Birkelunden, 0561 Oslo",
-            "images": ["https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=800"]
-        },
-        {
-            "id": "bondens-marked-majorstuen",
-            "name": "Bondens Marked Majorstuen",
-            "description": "Ukentlig marked på Valkyrie plass. Kortreist mat fra lokale produsenter i Oslo-området.",
-            "products": ["vegetables", "meat", "cheese", "honey", "seasonal"],
-            "location": {
-                "lat": 59.9298,
-                "lng": 10.7128
-            },
-            "address": "Valkyrie plass, 0366 Oslo",
-            "images": ["https://images.unsplash.com/photo-1542838132-92c53300491e?w=800"]
-        },
-        {
-            "id": "fjelberg-fisk",
-            "name": "Fjelberg Fisk og Vilt",
-            "description": "Delikatessebutikk med fersk fisk, sjømat og viltkjøtt av høyeste kvalitet.",
-            "products": ["fish", "meat"],
-            "location": {
-                "lat": 59.9170,
-                "lng": 10.7280
-            },
-            "address": "Oslo sentrum",
-            "images": ["https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800"]
-        },
-        {
-            "id": "annis-polsemakeri",
-            "name": "Annis Pølsemakeri",
-            "description": "Håndlagde pølser og kjøttprodukter. Butikk i Mathallen og Oslobukta.",
-            "products": ["meat", "sausages"],
-            "location": {
-                "lat": 59.9220,
-                "lng": 10.7510
-            },
-            "address": "Mathallen, Vulkan 5, 0178 Oslo",
-            "images": ["https://images.unsplash.com/photo-1504973960431-1c467e159aa4?w=800"]
-        },
-        {
-            "id": "bamsrudlaven",
-            "name": "Bamsrudlåven",
-            "description": "Gårdsis laget av naboens melk og egne frittgående høner. Kafé og gårdsbutikk.",
-            "products": ["milk", "eggs", "seasonal"],
-            "location": {
-                "lat": 59.5789,
-                "lng": 11.3456
-            },
-            "address": "Mysen",
-            "images": ["https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=800"]
-        },
-        {
-            "id": "bestefarhuset",
-            "name": "BesteFarHuset",
-            "description": "En av Norges koseligste kaféer i Blaker, med lokalmat og hjemmebakst over to etasjer.",
-            "products": ["seasonal", "eggs"],
-            "location": {
-                "lat": 59.9650,
-                "lng": 11.2100
-            },
-            "address": "Blaker, Lillestrøm",
-            "images": ["https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800"]
-        },
-        {
-            "id": "mathallen-oslo",
-            "name": "Mathallen Oslo",
-            "description": "Mathall med over 30 spesialbutikker. Ost, kjøtt, fisk, bakeri og lokale delikatesser.",
-            "products": ["cheese", "meat", "fish", "seasonal"],
-            "location": {
-                "lat": 59.9222,
-                "lng": 10.7518
-            },
-            "address": "Vulkan 5, 0178 Oslo",
-            "images": ["https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800"]
-        },
-        {
-            "id": "gutta-pa-haugen",
-            "name": "Gutta på Haugen",
-            "description": "Norsk ost og spekemat av høyeste kvalitet. Eksperter på lokalmat i Mathallen.",
-            "products": ["cheese", "meat"],
-            "location": {
-                "lat": 59.9224,
-                "lng": 10.7516
-            },
-            "address": "Mathallen, Vulkan 5, 0178 Oslo",
-            "images": ["https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=800"]
-        },
-        {
-            "id": "rostadt-gronnsaker",
-            "name": "Røstad Grønnsaker",
-            "description": "Økologiske grønnsaker fra gården på Nesodden. Selvplukk i sesong.",
-            "products": ["vegetables", "potatoes", "seasonal"],
-            "location": {
-                "lat": 59.8200,
-                "lng": 10.6500
-            },
-            "address": "Nesodden",
-            "images": ["https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800"]
-        },
-        {
-            "id": "kolbotn-torg-marked",
-            "name": "Bondens Marked Kolbotn",
-            "description": "Lokalt marked på Kolbotn Torg med ferske råvarer fra bønder i Follo.",
-            "products": ["vegetables", "eggs", "honey", "seasonal"],
-            "location": {
-                "lat": 59.8100,
-                "lng": 10.8000
-            },
-            "address": "Kolbotn Torg, 1410 Kolbotn",
-            "images": ["https://images.unsplash.com/photo-1534483509719-3feaee7c30da?w=800"]
-        },
-        {
-            "id": "asker-marked",
-            "name": "Bondens Marked Asker",
-            "description": "Marked i Asker sentrum med lokale produsenter fra Asker og Bærum.",
-            "products": ["vegetables", "honey", "eggs", "meat"],
-            "location": {
-                "lat": 59.8333,
-                "lng": 10.4350
-            },
-            "address": "Asker sentrum",
-            "images": ["https://images.unsplash.com/photo-1550989460-0adf9ea622e2?w=800"]
-        },
-        {
-            "id": "holt-gard",
-            "name": "Holt Gård",
-            "description": "Jarlsbergkuene gir fersk rå melk som bearbeides til yoghurt og kvarg. Kontakt for bestilling av meieriprodukter.",
-            "products": ["raw_milk", "milk", "cheese"],
-            "location": {
-                "lat": 59.3725,
-                "lng": 10.3156
-            },
-            "address": "Holtveien 41, 3080 Holmestrand",
-            "website": "https://holtgard.no",
-            "images": ["https://images.unsplash.com/photo-1550583724-b2692b85b150?w=800"]
-        },
-        {
-            "id": "kilnesgard",
-            "name": "Kilnesgård",
-            "description": "Pasteurisert, ikke-homogenisert melk som bevarer naturlige egenskaper. Brunostkrem og yoghurt. Melk på bestilling.",
-            "products": ["milk", "cheese"],
-            "location": {
-                "lat": 59.7456,
-                "lng": 10.2134
-            },
-            "address": "Kilnes, 3490 Klokkarstua",
-            "website": "https://kilnesgard.no",
-            "images": ["https://images.unsplash.com/photo-1563636619-e9143da7973b?w=800"]
-        },
-        {
-            "id": "grøstad-gård",
-            "name": "Grøstad Gård",
-            "description": "Økologisk gård med melkeproduksjon. Ku på beite hele sommeren. Rå melk tilgjengelig for medlemmer av melkering.",
-            "products": ["raw_milk", "milk", "meat"],
-            "location": {
-                "lat": 59.6234,
-                "lng": 10.7891
-            },
-            "address": "Vestby",
-            "images": ["https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=800"]
-        },
-        {
-            "id": "tingvoll-gård",
-            "name": "Tingvoll Gård",
-            "description": "Gårdsmeieri med upasteurisert ost laget av egen melk. Melkeringer for rå melk.",
-            "products": ["raw_milk", "cheese", "milk"],
-            "location": {
-                "lat": 59.8912,
-                "lng": 10.5678
-            },
-            "address": "Bærum",
-            "images": ["https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=800"]
-        }
-    ]
+  "farmers": [
+    {
+      "id": "osm-302026064",
+      "name": "Baker Hansen",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.936791,
+        "lng": 10.766383
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-450644117",
+      "name": "Dana Bakeri",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.943702,
+        "lng": 10.720926
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-847629728",
+      "name": "Godt Brød",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9489688,
+        "lng": 10.7665923
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-854462004",
+      "name": "Backstube",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9349599,
+        "lng": 10.764684
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-858406094",
+      "name": "Strøm-Larsen",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "meat"
+      ],
+      "location": {
+        "lat": 59.9351,
+        "lng": 10.765294
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-865263980",
+      "name": "Bake Me Up",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.914065,
+        "lng": 10.74291
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-930426909",
+      "name": "Kajsas",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.8704758,
+        "lng": 10.5163614
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-1141236227",
+      "name": "Kanelsnurren",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9214032,
+        "lng": 10.6794177
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-1198976219",
+      "name": "Samson",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9259043,
+        "lng": 10.7751497
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-1199008345",
+      "name": "Carl Berner Frukt, Grønt og Delikatesse",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9264425,
+        "lng": 10.7760193
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-1215969583",
+      "name": "Madina Sweets",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9136438,
+        "lng": 10.7667518
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-1215970477",
+      "name": "Nordbygata dagligvare",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9130324,
+        "lng": 10.7652544
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-1246332420",
+      "name": "Kristines Franske Fristelser",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.932624,
+        "lng": 10.724218
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-1282221005",
+      "name": "Nesodden Frukt og Grønt",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.8603552,
+        "lng": 10.6656059
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-1329411537",
+      "name": "Mevlana",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9200291,
+        "lng": 10.7575127
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-1376727141",
+      "name": "Gulden",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9432852,
+        "lng": 10.6998485
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-1416736874",
+      "name": "Åpent Bakeri Adamstuen",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.931012,
+        "lng": 10.7356028
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-1608134657",
+      "name": "Baker Nordby",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.856176,
+        "lng": 10.661063
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-1668803314",
+      "name": "Den Blinde Ku",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.6516471,
+        "lng": 10.6930613
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-1749088463",
+      "name": "Grønlands Torg Frukt & Grønt",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.91262,
+        "lng": 10.759127
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-1795411261",
+      "name": "Bjølsen Bakeri",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.941654,
+        "lng": 10.759149
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-1944600088",
+      "name": "Fromagerie",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "cheese"
+      ],
+      "location": {
+        "lat": 59.928886,
+        "lng": 10.717578
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-1983640615",
+      "name": "Kaffekos",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.8829835,
+        "lng": 10.8454969
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-2017935653",
+      "name": "Hasle Gårdsbutikk",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.7757076,
+        "lng": 10.6889203
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-2058231608",
+      "name": "Bergvang gårdsbutikk",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.8501963,
+        "lng": 10.4122137
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-2110528993",
+      "name": "Sagene Torg",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.93781,
+        "lng": 10.754304
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-2260290567",
+      "name": "Lokal Gård",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9264777,
+        "lng": 10.6211425
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-2260309213",
+      "name": "Kanel Steinovnsbakeri",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.8908208,
+        "lng": 10.5240814
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-2291536240",
+      "name": "Mares",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "fish"
+      ],
+      "location": {
+        "lat": 59.915615,
+        "lng": 10.715746
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-2299419260",
+      "name": "Røtter",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9231846,
+        "lng": 10.7593899
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-2362936727",
+      "name": "Åpent Bakeri",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9282356,
+        "lng": 10.7587236
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-2381579436",
+      "name": "W.B. Samson",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.926675,
+        "lng": 10.7589689
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-2919371565",
+      "name": "Olivenlunden 1830",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9222771,
+        "lng": 10.7574937
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-3012169466",
+      "name": "Skafferiet",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.918227,
+        "lng": 10.702542
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-3012892756",
+      "name": "Frukt Kongen",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9460703,
+        "lng": 11.0079455
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-3013002874",
+      "name": "Ege Frukt & Grønt",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.920032,
+        "lng": 10.70365
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-3397094879",
+      "name": "Grønlands Torg Kjøtt",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "meat"
+      ],
+      "location": {
+        "lat": 59.9123689,
+        "lng": 10.7591751
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-3650497113",
+      "name": "All In One",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9132334,
+        "lng": 10.7653029
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-3655282221",
+      "name": "Batat import",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9125093,
+        "lng": 10.7644966
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-3666621787",
+      "name": "Istanbul",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.8476584,
+        "lng": 10.8041906
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-3679328228",
+      "name": "Green Asian market",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.947332,
+        "lng": 11.0101946
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-3768066726",
+      "name": "Bazaar",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9613444,
+        "lng": 10.8819687
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-4510195461",
+      "name": "Fenaknoken",
+      "description": "Norsk tradisjonsmat",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.911618,
+        "lng": 10.735172
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-4589703068",
+      "name": "Nye pakstar",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.914328,
+        "lng": 10.763331
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-4665880843",
+      "name": "Georg A. Nilsent",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "fish"
+      ],
+      "location": {
+        "lat": 59.9273627,
+        "lng": 10.7203705
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-4714733514",
+      "name": "Haslum Frukt",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.915556,
+        "lng": 10.561425
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-4839129088",
+      "name": "Fardal bakeri konditori",
+      "description": "Bakery, confectionary and café. Also makes pizza. Serving inside and outside and to go.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.892561,
+        "lng": 10.630163
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-4895081624",
+      "name": "Håndverksbakeriet",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.6637018,
+        "lng": 10.6303613
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-4966253811",
+      "name": "Norkjøtt",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "meat"
+      ],
+      "location": {
+        "lat": 59.9134312,
+        "lng": 10.759174
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-4984219170",
+      "name": "Flyvefiskens eftf. AS",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "fish"
+      ],
+      "location": {
+        "lat": 59.913424,
+        "lng": 10.756139
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-5091617746",
+      "name": "Elma",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9193471,
+        "lng": 10.7624064
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-5091617748",
+      "name": "Makwans kjøttsenter",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "meat"
+      ],
+      "location": {
+        "lat": 59.9194216,
+        "lng": 10.7623068
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-5094785559",
+      "name": "A-Food Market",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9142165,
+        "lng": 10.7545907
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-5094785591",
+      "name": "Verona kjøtt",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "meat"
+      ],
+      "location": {
+        "lat": 59.9141631,
+        "lng": 10.7548457
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-5099558121",
+      "name": "Jood dagligvare",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9378481,
+        "lng": 10.7317499
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-5212169898",
+      "name": "Flaneur Food",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9191084,
+        "lng": 10.7188856
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-5236963259",
+      "name": "Bakeriet Colosseum",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9307777,
+        "lng": 10.7097521
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-5588129121",
+      "name": "Kveitmjøl",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9093487,
+        "lng": 10.7251234
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-5592979339",
+      "name": "Tayyib Halal Mat",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "meat"
+      ],
+      "location": {
+        "lat": 59.9132123,
+        "lng": 10.7604273
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-5726566237",
+      "name": "Rosenberg spiseforretning",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "meat"
+      ],
+      "location": {
+        "lat": 59.952221,
+        "lng": 11.046213
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-6037625297",
+      "name": "Sentrum bakeri",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.8103027,
+        "lng": 10.803092
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-6341587401",
+      "name": "Smak av Italia - Oslo Vulkan",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9228659,
+        "lng": 10.7512108
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-6699369415",
+      "name": "Pasha Frukt og Grønt",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9638171,
+        "lng": 10.892464
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-7118179979",
+      "name": "The Little Bakery",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9106277,
+        "lng": 10.7491471
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-7119960773",
+      "name": "Carl Heftye",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9118537,
+        "lng": 10.7470403
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-7277980626",
+      "name": "Smelters mathus",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9392753,
+        "lng": 10.5014352
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-7716362786",
+      "name": "Grains Majorstuen",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9300601,
+        "lng": 10.7157374
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-7780929057",
+      "name": "Hokholt gård (booth)",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.770832,
+        "lng": 10.6688687
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-7836627235",
+      "name": "LOKAL Harbitz Torg",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.924324,
+        "lng": 10.673387
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-8071786980",
+      "name": "Baker Rigal",
+      "description": "Lager pizza og boller /snurrer av surdeig.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.925533,
+        "lng": 10.7144089
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-8653308017",
+      "name": "Farine",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.911525,
+        "lng": 10.781528
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-8788323391",
+      "name": "Holmlia Torg",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.834897,
+        "lng": 10.794744
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-8818874255",
+      "name": "Lillestrøm kjøtt",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "meat"
+      ],
+      "location": {
+        "lat": 59.9553563,
+        "lng": 11.0462497
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-8900114419",
+      "name": "Verdensbakeriet",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9156019,
+        "lng": 10.7559685
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-9216181065",
+      "name": "Olivenlunden 1830 Sandvika Storsenter",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.890044,
+        "lng": 10.520177
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-9216246219",
+      "name": "Olivenlunden 1830 Storo Storsenter",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9467162,
+        "lng": 10.7745906
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-9216444683",
+      "name": "Olivenlunden 1830 CC Vest",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.917421,
+        "lng": 10.635809
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-9278421056",
+      "name": "Olivenlunden Ski Storsenter",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.717155,
+        "lng": 10.836423
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-9348644761",
+      "name": "Vinderen Sjømat & Delikatesse",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "fish"
+      ],
+      "location": {
+        "lat": 59.9429426,
+        "lng": 10.7045944
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-10204324978",
+      "name": "Annis Pølsemakeri",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "meat"
+      ],
+      "location": {
+        "lat": 59.9220314,
+        "lng": 10.7519831
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-10204324979",
+      "name": "Vulkan fisk",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "fish"
+      ],
+      "location": {
+        "lat": 59.9220623,
+        "lng": 10.7518405
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-10659603556",
+      "name": "Gamle Oslo Delikatesse",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9086213,
+        "lng": 10.7686666
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-10709309322",
+      "name": "Smak av Italia",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9450258,
+        "lng": 10.7708404
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-10792784590",
+      "name": "Sætre Marina bakeri",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.6824094,
+        "lng": 10.5299251
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-10793096452",
+      "name": "Laksen Fisk og Vilt",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "fish"
+      ],
+      "location": {
+        "lat": 59.6635088,
+        "lng": 10.6294953
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-10816258768",
+      "name": "Gutta på haugen",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9224262,
+        "lng": 10.7519994
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-10856054543",
+      "name": "Soul cake",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9233532,
+        "lng": 10.7567491
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-10914407920",
+      "name": "Torggata kolonial",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9164112,
+        "lng": 10.7523919
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-11169227984",
+      "name": "Bakkal Kolonial & Landhandler",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.923876,
+        "lng": 10.4854578
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-11281480728",
+      "name": "The Cupcake & Pie Company",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9221568,
+        "lng": 10.7522743
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-11432594236",
+      "name": "Nøtteblanderen",
+      "description": "Store selling exclusively different types of nuts.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9226464,
+        "lng": 10.7266902
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-11526578740",
+      "name": "Olivenlunden 1830 Strømmen Storsenter",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9477607,
+        "lng": 11.0070202
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-11594169569",
+      "name": "Haneborg gård (tomter mais)",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.6876191,
+        "lng": 10.674506
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-11693412884",
+      "name": "Keiser Fruktmarked",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 60.1419172,
+        "lng": 11.1748023
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-11736697947",
+      "name": "Bekken kolonial",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9179862,
+        "lng": 10.5873679
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-11799604508",
+      "name": "Juels 33 Kolonial",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9182166,
+        "lng": 10.7189772
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-11816168091",
+      "name": "Oliviers & Co",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9268234,
+        "lng": 10.7208624
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-11884847915",
+      "name": "Begeist",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.965826,
+        "lng": 10.7717145
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-11884847916",
+      "name": "Grains Bakeri (Frysja)",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9657871,
+        "lng": 10.7718925
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-11915886501",
+      "name": "Havens Kolonial",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9314011,
+        "lng": 10.7252674
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-11931067101",
+      "name": "Baker Brun",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9261692,
+        "lng": 10.7211758
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-11998856486",
+      "name": "Deli de Luca",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.6146375,
+        "lng": 11.0815063
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-11998920677",
+      "name": "Keser Fruktmarked",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9203251,
+        "lng": 10.9545543
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12087436350",
+      "name": "Kværner Bakeri og Pizzeria",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9014532,
+        "lng": 10.7900465
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12103450510",
+      "name": "Kakeriet",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9514511,
+        "lng": 10.7862241
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12167864946",
+      "name": "Fager Bakst",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.7472396,
+        "lng": 10.612675
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12189554833",
+      "name": "Sjømagasinet – Fiskebutikken",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "fish"
+      ],
+      "location": {
+        "lat": 59.9078202,
+        "lng": 10.7219687
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12329392263",
+      "name": "Ljabru Fruktmarked",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.8513847,
+        "lng": 10.80025
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12443895124",
+      "name": "Nittedal Gårdsbutikk",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 60.0227859,
+        "lng": 10.9279304
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12612614505",
+      "name": "Galopin Mathallen",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9220637,
+        "lng": 10.7522483
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12650108825",
+      "name": "Glutenfrihuset",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9099186,
+        "lng": 10.7771678
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12656859301",
+      "name": "Mendel’s",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.911727,
+        "lng": 10.7468614
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12666480301",
+      "name": "Annis Oslobukta",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9073333,
+        "lng": 10.7590382
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12669751601",
+      "name": "Grains Bakeri (Mathallen)",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9223538,
+        "lng": 10.7518248
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12669751701",
+      "name": "Grains Frogner - Bakeri & Crêperie",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9174752,
+        "lng": 10.7157843
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12690738501",
+      "name": "Felloni & Piersante",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9233787,
+        "lng": 10.7661903
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12715278701",
+      "name": "La Bakeri de Jean",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9361445,
+        "lng": 10.7621711
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12723775324",
+      "name": "Italia Mat",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9266482,
+        "lng": 10.7573534
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12787831182",
+      "name": "Norway Mat",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9088059,
+        "lng": 10.7684687
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12787856802",
+      "name": "Fiorentino",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9101631,
+        "lng": 10.767641
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12787862013",
+      "name": "Amisa Halal Kjøtt",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "meat"
+      ],
+      "location": {
+        "lat": 59.9124292,
+        "lng": 10.7647799
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12818743957",
+      "name": "Lille bakeri",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9189349,
+        "lng": 10.7407998
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12912659362",
+      "name": "Grøde",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.913953,
+        "lng": 10.7883814
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12919074426",
+      "name": "Farine Frukt & Fødevare",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.911881,
+        "lng": 10.7807247
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12927956336",
+      "name": "Via Italia",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9223058,
+        "lng": 10.7520011
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12966034162",
+      "name": "Nasser",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.9328907,
+        "lng": 10.7604676
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12966077023",
+      "name": "Frida",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9326289,
+        "lng": 10.7630189
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-12979690801",
+      "name": "Tøyen Mat",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.9125862,
+        "lng": 10.7742241
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-13074765415",
+      "name": "Berles Gårdsbutikk AS",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.6022734,
+        "lng": 10.4027931
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-13089017222",
+      "name": "Mjøl",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9257463,
+        "lng": 10.7755271
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-13330166451",
+      "name": "Håndbakt",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9356463,
+        "lng": 10.8276955
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "osm-13427486071",
+      "name": "Aanerud Bakeri",
+      "description": "Lokal gård med ferske varer.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.9212331,
+        "lng": 10.7267433
+      },
+      "address": "Oslo-området",
+      "images": [
+        "/placeholder.jpg"
+      ]
+    },
+    {
+      "id": "bm-alm-gard-574",
+      "name": "Alm gard Økologisk gardsost etter Nederlandsk oppskrift. Gardsis med naturlege ingredienser (fløyteis, yoghurtis og sorbet).",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "honey",
+        "cheese"
+      ],
+      "location": {
+        "lat": 59.870318790444315,
+        "lng": 10.797975924406416
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/m572zmceyxgliechilst.jpg"
+      ]
+    },
+    {
+      "id": "bm-garden-pa-dalland-917",
+      "name": "Garden på Dalland kvalitetskjøt av vestlandsk fjordfe - kortreist og grasfôra",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.93637912123761,
+        "lng": 10.705808837984472
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/xrhsz6uxlvxelxzqopda.jpg"
+      ]
+    },
+    {
+      "id": "bm-gulen-gartneri-1030",
+      "name": "Gulen Gartneri Økologiske grønnsaker og blomster sommer og høst. Et rik utvalg småplanter i forsesong. Kranser og pyntegrønt om vinteren.",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "vegetables"
+      ],
+      "location": {
+        "lat": 59.91583596129582,
+        "lng": 10.770065051350528
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/lzf6m6knjhlhwchk11x5.jpg"
+      ]
+    },
+    {
+      "id": "bm-hardanger-bygdeysteri-1119",
+      "name": "Hardanger Bygdeysteri Steikeost, en halloumi-inspirert ost som skal stekes eller grilles. Vi har flere smaksvarianter; naturell, en med chili og en som blir røykt på tradisjonell vis. I tillegg varierer vi litt med sesongbaserte smakstilsettinger. Vi serverer alltid rykende varme smaksprøver. Velkommen til å smake.",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "eggs",
+        "cheese"
+      ],
+      "location": {
+        "lat": 59.86460653150466,
+        "lng": 10.747001257493174
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/n1xo4zjaxslre21w11iu.jpg"
+      ]
+    },
+    {
+      "id": "bm-hatten-bigard-771",
+      "name": "Hatten Bigård Lynghonning, Vossahonning og honningsøta syltetøy av bringebær, blåbær, skogsbær og tyttebær.",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "honey"
+      ],
+      "location": {
+        "lat": 59.878779600210535,
+        "lng": 10.702523490260718
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/ij3un5fgbogwloororiq.jpg"
+      ]
+    },
+    {
+      "id": "bm-haugen-gardsmat-569",
+      "name": "Haugen Gardsmat Me produserer og sel lam, kje, frittgåande utegris, storfe og vill hjort. Tilbodet på fersk, speka eller andre produkt som pålegg, burger, pølse eller spiseklare gryter avhenger av sesong.",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "eggs",
+        "meat",
+        "sausages"
+      ],
+      "location": {
+        "lat": 59.90584172982197,
+        "lng": 10.79848616114874
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/pqklkhgbngyoiekswkw9.jpg"
+      ]
+    },
+    {
+      "id": "bm-haust-hardanger-570",
+      "name": "Haust Hardanger Frisk og tørka frukt. Eple- pg plommesyltetøy. Div. chutney. Bakevarer med frukt. Tilslørte bondepiker, Fruktte.",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.93798175619903,
+        "lng": 10.745627171043807
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/dl2xurtepujrzvdkfbag.jpg"
+      ]
+    },
+    {
+      "id": "bm-heimtun-485",
+      "name": "Heimtun Kjøt av Vestlandsk fjordfe og sau, lammepølser, kjøt og sopp.",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "meat",
+        "sausages"
+      ],
+      "location": {
+        "lat": 59.91589783256238,
+        "lng": 10.77045418791455
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/rvqrvexhiju50hhqn2jz.jpg"
+      ]
+    },
+    {
+      "id": "bm-kardemomme-i-marken-1307",
+      "name": "Kardemomme i Marken Surdeigsbrød: lyst, grovt med korn, 100% spelt, 100% rug og solsikkefrø, havrebrød. Lyse og grove rundstykker Søtsaker som brownies, forskjellige type cookies, diverse boller.",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "bread"
+      ],
+      "location": {
+        "lat": 59.89435602321252,
+        "lng": 10.76471968458531
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/udxxh4jxzrrrracwpaab.jpg"
+      ]
+    },
+    {
+      "id": "bm-kystvilt-606",
+      "name": "Kystvilt Kjøt av vilt og hjort. Foredla og ferskt kjøt.",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.8700749325232,
+        "lng": 10.721587192949201
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/ju9ezjneoojg6yvx7ouj.jpg"
+      ]
+    },
+    {
+      "id": "bm-leiren-laks-611",
+      "name": "Leiren Laks Røykt regnbogeaure og (vilt) laks.",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "fish"
+      ],
+      "location": {
+        "lat": 59.92771240623075,
+        "lng": 10.705852424907409
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/wtd54hzauqbp4qv0ey2o.jpg"
+      ]
+    },
+    {
+      "id": "bm-lomelde-gard-617",
+      "name": "Lomelde Gard Moreller og plommer som vert dyrka med innslag av kirsebær og epler.",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.926955229719255,
+        "lng": 10.75515181496705
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/tswcki86cnfebrb9ilx5.jpg"
+      ]
+    },
+    {
+      "id": "bm-lygre-livsgard-619",
+      "name": "Lygre Livsgard Økologisk brun geitost, økologisk kefir av geitmjølk, økologisk kvark (ferskost)",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "cheese"
+      ],
+      "location": {
+        "lat": 59.94982756973158,
+        "lng": 10.756334819977134
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/ltycghmjezzaumiciema.jpg"
+      ]
+    },
+    {
+      "id": "bm-noring-647",
+      "name": "Nøring Bakevarer, frukt, bær, syltetøy, urter, inkl. ramsløk",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.924188629458655,
+        "lng": 10.706518631989963
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/gcfasvciljz7czgt3nyl.jpg"
+      ]
+    },
+    {
+      "id": "bm-ostegarden-653",
+      "name": "Ostegården Mjukoster og halvfaste oster av kumelk.",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "milk",
+        "cheese"
+      ],
+      "location": {
+        "lat": 59.896587947292026,
+        "lng": 10.794353664831473
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/sgk1l0aktpwpvjoitimn.jpg"
+      ]
+    },
+    {
+      "id": "bm-slettevollen-gardsysteri-1299",
+      "name": "Slettevollen gardsysteri Ost og meieriprodukter",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "milk",
+        "cheese"
+      ],
+      "location": {
+        "lat": 59.93415929743448,
+        "lng": 10.703576680829508
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/cj3b80p5baejkhs1whdj.jpg"
+      ]
+    },
+    {
+      "id": "bm-solvang-gardsmat-1236",
+      "name": "Solvang Gardsmat Lammekjøtt, grove lammepølser, svinepølser, ferdige krydret farser, frokost patties, salsiccia farse, luksusburger, lammeburger og Gyros. Påfuglfjær, sau og lammeskinn",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "meat",
+        "sausages",
+        "cheese"
+      ],
+      "location": {
+        "lat": 59.895626370816515,
+        "lng": 10.78405614958404
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/fge273dvktvbuooqqwjz.jpg"
+      ]
+    },
+    {
+      "id": "bm-tessas-eplegard-1218",
+      "name": "Tessas Eplegard Epleprodukter og honning",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "honey"
+      ],
+      "location": {
+        "lat": 59.89627256791524,
+        "lng": 10.702273033733688
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/x2htesxozuagunzg4wyz.jpg"
+      ]
+    },
+    {
+      "id": "bm-tveita-gardsmat-781",
+      "name": "Tveita Gardsmat Pølser, kjøttkaker, karbonader, sirup, chutneys, bringebær, sylte av jordbær og bringebær, og ostekake.",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "meat",
+        "sausages",
+        "cheese"
+      ],
+      "location": {
+        "lat": 59.92842786884049,
+        "lng": 10.787952612287183
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/dte2vwtssbboufceawyl.jpg"
+      ]
+    },
+    {
+      "id": "bm-undredal-stolsysteri-707",
+      "name": "Undredal Stølsysteri",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "sausages",
+        "cheese"
+      ],
+      "location": {
+        "lat": 59.92879690358662,
+        "lng": 10.771979858692859
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/nkjbbz7kelep0xwrgitt.jpg"
+      ]
+    },
+    {
+      "id": "bm-vossabia-815",
+      "name": "Vossabia Honning:",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "honey"
+      ],
+      "location": {
+        "lat": 59.906828558280544,
+        "lng": 10.7972250765317
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/xidm8xyr5pkyxuyr4jdp.jpg"
+      ]
+    },
+    {
+      "id": "bm-vossasmoret-813",
+      "name": "Vossasmøret Vossasmøret er laga av mjølk frå eigne kyr. Smøret vert kidna av upasteurisert og uhomogenisert rjome og er difor heilt naturleg, kun tilsett salt. Kan også bestillast usalta. Det er laga etter gamle tradisjonar slik ho besta lagde det, og vert kidna med omsorg for menneskje, dyr og natur.",
+      "description": "Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.",
+      "products": [
+        "seasonal"
+      ],
+      "location": {
+        "lat": 59.951799130566044,
+        "lng": 10.717677921717334
+      },
+      "address": "Oslo-området",
+      "images": [
+        "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/jn14bxg9edxsm2wtwaqf.jpg"
+      ]
+    }
+  ]
 }
