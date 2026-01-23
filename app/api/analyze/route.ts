@@ -1,13 +1,32 @@
 import { NextResponse } from "next/server";
-import Groq from "groq-sdk";
 import * as cheerio from "cheerio";
 
-const groq = new Groq({
-    apiKey: process.env.GROQ_API_KEY,
-});
+// Lazy initialization to avoid build errors when API key is missing
+let groqClient: any = null;
+
+function getGroqClient() {
+    if (!groqClient) {
+        const apiKey = process.env.GROQ_API_KEY;
+        if (!apiKey) {
+            throw new Error("GROQ_API_KEY is not configured");
+        }
+        // Dynamic import to avoid build-time errors
+        const Groq = require("groq-sdk").default;
+        groqClient = new Groq({ apiKey });
+    }
+    return groqClient;
+}
 
 export async function POST(request: Request) {
     try {
+        // Check API key early
+        if (!process.env.GROQ_API_KEY) {
+            return NextResponse.json(
+                { error: "API not configured. Contact admin." },
+                { status: 503 }
+            );
+        }
+
         const body = await request.json();
         const { url } = body;
         let { text } = body;
@@ -23,14 +42,10 @@ export async function POST(request: Request) {
                 });
                 const html = await res.text();
 
-                // Parse HTML to get main text (reduce token usage)
+                // Parse HTML to get main text
                 const $ = cheerio.load(html);
-
-                // Remove scripts, styles, and nav/footers to reduce noise
                 $('script, style, nav, footer, iframe, svg').remove();
-
-                // Get text content
-                text = $('body').text().replace(/\s+/g, ' ').trim().substring(0, 15000); // Limit context window
+                text = $('body').text().replace(/\s+/g, ' ').trim().substring(0, 15000);
                 console.log("Fetched text length:", text.length);
 
             } catch (fetchError) {
@@ -45,12 +60,13 @@ export async function POST(request: Request) {
 
         console.log("Analyzing with Groq...");
 
+        const groq = getGroqClient();
         const completion = await groq.chat.completions.create({
             messages: [
                 {
                     role: "system",
                     content: `You are an event extraction AI. Your goal is to extract structured data from unstructured text (website scrape or raw text).
-          
+
           Extract the following fields in strict JSON format:
           - tittel (string): A short, catchy title.
           - beskrivelse (string): A summary of the event (max 200 chars).
