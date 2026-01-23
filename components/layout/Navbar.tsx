@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { MapPin, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export function Navbar() {
@@ -36,8 +37,8 @@ export function Navbar() {
             <header className="sticky top-0 z-50 w-full border-b-2 border-black bg-background">
                 <div className="container mx-auto flex h-14 md:h-16 items-center justify-between px-4 md:px-6">
                     <Link href="/" className="flex items-center gap-2 group">
-                        <div className="flex h-8 w-8 md:h-10 md:w-10 items-center justify-center border-2 border-black bg-primary text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5 group-hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
-                            <MapPin className="h-4 w-4 md:h-6 md:w-6 stroke-[3]" />
+                        <div className="flex h-8 w-8 md:h-10 md:w-10 items-center justify-center overflow-hidden shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5 group-hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
+                            <Image src="/logo.svg" alt="Kortreist Mat" width={40} height={40} className="w-full h-full" />
                         </div>
                         <span className="text-lg md:text-xl font-black uppercase tracking-tighter italic">Kortreist</span>
                     </Link>

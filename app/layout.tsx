@@ -10,7 +10,32 @@ const courier = Courier_Prime({
 
 export const metadata: Metadata = {
   title: "Kortreist Mat - Finn lokal mat nær deg",
-  description: "Oversikt over lokale bønder og ferske råvarer i din region.",
+  description: "Dropp de dyre dagligvarekjedene. Finn råmelk, lokalhonning, hjemmebakt brød og ferskt kjøtt direkte fra bonden i Oslo-området.",
+  keywords: ["lokalmat", "bonde", "råmelk", "honning", "gårdsbutikk", "oslo", "kortreist", "fersk mat"],
+  authors: [{ name: "Kortreist Mat" }],
+  creator: "Kortreist Mat",
+  metadataBase: new URL('https://kortreist.vercel.app'),
+  openGraph: {
+    type: 'website',
+    locale: 'nb_NO',
+    url: 'https://kortreist.vercel.app',
+    siteName: 'Kortreist Mat',
+    title: 'Kortreist Mat - Finn lokal mat nær deg',
+    description: 'Dropp de dyre dagligvarekjedene. Finn råmelk, lokalhonning, hjemmebakt brød og ferskt kjøtt direkte fra bonden.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Kortreist Mat - Finn lokal mat nær deg',
+    description: 'Dropp de dyre dagligvarekjedene. Finn råmelk, lokalhonning, hjemmebakt brød og ferskt kjøtt direkte fra bonden.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: '/logo.svg',
+    apple: '/logo.svg',
+  },
 };
 
 export default function RootLayout({
