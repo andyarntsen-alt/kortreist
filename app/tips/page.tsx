@@ -142,11 +142,11 @@ export default function TipsPage() {
                                     <div>
                                         <label className="block text-sm font-bold uppercase mb-2">Nettside / Facebook (valgfritt)</label>
                                         <Input
-                                            type="url"
+                                            type="text"
                                             value={formData.website}
                                             onChange={(e) => setFormData({ ...formData, website: e.target.value })}
                                             className="border-2 border-black"
-                                            placeholder="https://..."
+                                            placeholder="Lenke eller navn på Facebook-side"
                                         />
                                     </div>
 
