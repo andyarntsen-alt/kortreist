@@ -2475,6 +2475,147 @@
       "images": [
         "https://res.cloudinary.com/hanen/image/upload/c_fill,dpr_2,h_600,q_70,w_800/v1/BM/jn14bxg9edxsm2wtwaqf.jpg"
       ]
+    },
+    {
+      "id": "grondalen-gard",
+      "name": "Grøndalen Gård (Nyr)",
+      "description": "Økologisk gårdsmeieri ved Glomma i Nes. Produserer den prisbelønte ferskosten Nyr av melk fra 19 glade kuer. Kuene får ta vare på egen kalv. Debio- og Dyrevelferdmerket.",
+      "products": [
+        "milk",
+        "cheese"
+      ],
+      "location": {
+        "lat": 60.1228,
+        "lng": 11.4856
+      },
+      "address": "Nes i Akershus",
+      "images": [
+        "https://www.nyr.no/wp-content/uploads/2020/03/nyr_produkt.jpg"
+      ]
+    },
+    {
+      "id": "delas-gard",
+      "name": "Delås Gård",
+      "description": "Økologisk gård i Skjeberg med jerseykyr. Produserer melk, yoghurt, tjukkmelk, kefir, smør og rømme. Åpen gårdsbutikk hver dag med Vipps-betaling.",
+      "products": [
+        "milk",
+        "cheese",
+        "eggs",
+        "honey"
+      ],
+      "location": {
+        "lat": 59.2167,
+        "lng": 11.1500
+      },
+      "address": "Sandåsveien 95, 1746 Skjeberg",
+      "images": [
+        "https://delasgard.no/wp-content/uploads/2021/05/jersey-ku.jpg"
+      ]
+    },
+    {
+      "id": "rygge-meieri",
+      "name": "Rygge Meieri",
+      "description": "Eneste lokale meieriet i Østfold med økologisk melk fra Bjølsund Gård. Håndystet ost og yoghurt. Gull i Oste-NM på Bjølsund Brie. Gårdsbutikk fredag og lørdag.",
+      "products": [
+        "milk",
+        "cheese"
+      ],
+      "location": {
+        "lat": 59.3786,
+        "lng": 10.7144
+      },
+      "address": "Stasjonsveien 2, Rygge",
+      "images": [
+        "https://www.ryggemeieri.no/images/meieriet.jpg"
+      ]
+    },
+    {
+      "id": "holt-gard-vestfold",
+      "name": "Holt Gård",
+      "description": "Økologisk gård i Undrumsdal. Eget meieri med yoghurt, surmelk, ost og iskrem. YMIR-yoghurt kåret topp 3 i Norge. Gårdsbutikk med kjøtt og egg.",
+      "products": [
+        "milk",
+        "cheese",
+        "meat",
+        "eggs"
+      ],
+      "location": {
+        "lat": 59.3500,
+        "lng": 10.3167
+      },
+      "address": "Undrumsdal, Vestfold",
+      "images": [
+        "https://holtgard.no/wp-content/uploads/meieri.jpg"
+      ]
+    },
+    {
+      "id": "kilnesgard",
+      "name": "Kilnesgård",
+      "description": "Gårdsmeieri i Trøndelag. Pasteurisert men ikke homogenisert melk. Brunostkrem og yoghurt. Melk på bestilling, minste 5 liter.",
+      "products": [
+        "milk",
+        "cheese"
+      ],
+      "location": {
+        "lat": 63.4305,
+        "lng": 10.3951
+      },
+      "address": "Trøndelag",
+      "images": [
+        "https://kilnesgard.no/wp-content/uploads/melkebua.jpg"
+      ]
+    },
+    {
+      "id": "ostegarden-sandefjord",
+      "name": "Ostegården",
+      "description": "Gårdsysteri i Sandefjord som lager ost av egen kumelk. Flere prisbelønte oster. Gårdsbutikk med lokale produkter.",
+      "products": [
+        "milk",
+        "cheese"
+      ],
+      "location": {
+        "lat": 59.1300,
+        "lng": 10.2167
+      },
+      "address": "Sandefjord, Vestfold",
+      "images": [
+        "/placeholder-farm.jpg"
+      ]
+    },
+    {
+      "id": "avdem-gardsmeieri",
+      "name": "Avdem Gårdsmeieri",
+      "description": "Økologisk gårdsmeieri i Valdres. Upasteurisert rømme, smør og ost. Prisbelønt brunost og geitost.",
+      "products": [
+        "milk",
+        "cheese",
+        "raw_milk"
+      ],
+      "location": {
+        "lat": 61.1833,
+        "lng": 9.1000
+      },
+      "address": "Valdres",
+      "images": [
+        "/placeholder-farm.jpg"
+      ]
+    },
+    {
+      "id": "fana-gardsmeieri",
+      "name": "Fannaråk Gardsmeieri",
+      "description": "Lite gårdsmeieri med fokus på tradisjonell osteproduksjon. Økologisk melk fra egne kuer.",
+      "products": [
+        "milk",
+        "cheese"
+      ],
+      "location": {
+        "lat": 59.8500,
+        "lng": 10.5500
+      },
+      "address": "Akershus",
+      "images": [
+        "/placeholder-farm.jpg"
+      ]
     }
   ]
 }
