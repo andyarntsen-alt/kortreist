@@ -19,6 +19,7 @@ interface FilterSidebarProps {
     // Sorting
     sortBy?: SortOption;
     onSortChange?: (sort: SortOption) => void;
+    onRequestLocation?: () => void;
 }
 
 const RADIUS_OPTIONS = [
@@ -47,6 +48,7 @@ export function FilterSidebar({
     hasUserLocation = false,
     sortBy = "distance",
     onSortChange,
+    onRequestLocation,
 }: FilterSidebarProps) {
     const categories: { id: ProductType, label: string }[] = [
         { id: 'raw_milk', label: 'Råmelk' },
@@ -88,13 +90,15 @@ export function FilterSidebar({
                         {SORT_OPTIONS.map((option) => (
                             <button
                                 key={option.value}
-                                onClick={() => onSortChange(option.value)}
-                                disabled={option.value === "distance" && !hasUserLocation}
+                                onClick={() => {
+                                    if (option.value === "distance" && !hasUserLocation) {
+                                        onRequestLocation?.();
+                                    }
+                                    onSortChange(option.value);
+                                }}
                                 className={`px-3 py-1.5 text-sm font-bold border-2 border-black transition-all touch-manipulation ${
                                     sortBy === option.value
                                         ? "bg-green-100 shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
-                                        : option.value === "distance" && !hasUserLocation
-                                        ? "bg-gray-100 text-gray-400 cursor-not-allowed shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]"
                                         : "bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5"
                                 }`}
                             >

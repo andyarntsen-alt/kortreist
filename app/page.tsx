@@ -313,6 +313,7 @@ function HomeContent() {
                   hasUserLocation={!!userLocation}
                   sortBy={sortBy}
                   onSortChange={setSortBy}
+                  onRequestLocation={requestLocation}
                 />
               </div>
             </aside>
@@ -409,6 +410,7 @@ function HomeContent() {
             hasUserLocation={!!userLocation}
             sortBy={sortBy}
             onSortChange={setSortBy}
+            onRequestLocation={requestLocation}
           />
           <button
             onClick={() => setIsMobileFilterOpen(false)}
