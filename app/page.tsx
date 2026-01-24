@@ -160,6 +160,17 @@ function HomeContent() {
         break;
     }
 
+    // Sort producers with real images first
+    const hasRealImage = (farmer: Farmer) => {
+      const img = farmer.images?.[0];
+      return img && !img.startsWith('/placeholder');
+    };
+    results = [...results].sort((a, b) => {
+      const aHasImage = hasRealImage(a) ? 1 : 0;
+      const bHasImage = hasRealImage(b) ? 1 : 0;
+      return bHasImage - aHasImage;
+    });
+
     return results;
   }, [farmers, filters, debouncedQuery, userLocation, showFavoritesOnly, favorites, radiusKm, sortBy]);
 
