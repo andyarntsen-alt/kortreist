@@ -18,8 +18,8 @@ interface ActivityGridProps {
 
 const ITEMS_PER_PAGE = 12;
 
-// Image component with fallback
-function ProducerImage({ src, alt }: { src: string; alt: string }) {
+// Image component with fallback - memoized to prevent re-renders
+const ProducerImage = memo(function ProducerImage({ src, alt }: { src: string; alt: string }) {
     const [hasError, setHasError] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -51,7 +51,7 @@ function ProducerImage({ src, alt }: { src: string; alt: string }) {
             />
         </>
     );
-}
+});
 
 interface ProducerCardProps {
     farmer: Farmer;
@@ -59,7 +59,7 @@ interface ProducerCardProps {
     onToggleFavorite?: (id: string) => void;
 }
 
-// Memoize individual card to prevent re-renders
+// Memoize individual card - compare by farmer.id to prevent unnecessary re-renders
 const ProducerCard = memo(function ProducerCard({ farmer, isFavorite = false, onToggleFavorite }: ProducerCardProps) {
     const handleFavoriteClick = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -131,6 +131,15 @@ const ProducerCard = memo(function ProducerCard({ farmer, isFavorite = false, on
                 </CardFooter>
             </Card>
         </Link>
+    );
+}, (prevProps, nextProps) => {
+    // Custom comparison: only re-render if these specific values change
+    return (
+        prevProps.farmer.id === nextProps.farmer.id &&
+        prevProps.farmer.images[0] === nextProps.farmer.images[0] &&
+        prevProps.farmer.name === nextProps.farmer.name &&
+        prevProps.isFavorite === nextProps.isFavorite &&
+        prevProps.farmer.distance === nextProps.farmer.distance
     );
 });
 
