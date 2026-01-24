@@ -52,7 +52,7 @@
       "products": ["bread"],
       "location": { "lat": 59.914065, "lng": 10.74291 },
       "address": "Oslo-området",
-      "images": ["https://images.unsplash.com/photo-1517433670267-30f41c4573ab?w=800"]
+      "images": ["/placeholder.jpg"]
     },
     {
       "id": "osm-930426909",
@@ -160,7 +160,7 @@
       "products": ["bread"],
       "location": { "lat": 59.856176, "lng": 10.661063 },
       "address": "Oslo-området",
-      "images": ["https://images.unsplash.com/photo-1517433670267-30f41c4573ab?w=800"]
+      "images": ["/placeholder.jpg"]
     },
     {
       "id": "osm-1668803314",
@@ -421,7 +421,7 @@
       "products": ["bread"],
       "location": { "lat": 59.892561, "lng": 10.630163 },
       "address": "Oslo-området",
-      "images": ["https://images.unsplash.com/photo-1517433670267-30f41c4573ab?w=800"]
+      "images": ["/placeholder.jpg"]
     },
     {
       "id": "osm-4895081624",
@@ -574,7 +574,7 @@
       "products": ["bread"],
       "location": { "lat": 59.9106277, "lng": 10.7491471 },
       "address": "Oslo-området",
-      "images": ["https://images.unsplash.com/photo-1517433670267-30f41c4573ab?w=800"]
+      "images": ["/placeholder.jpg"]
     },
     {
       "id": "osm-7119960773",
@@ -781,7 +781,7 @@
       "products": ["bread"],
       "location": { "lat": 59.9233532, "lng": 10.7567491 },
       "address": "Oslo-området",
-      "images": ["https://images.unsplash.com/photo-1517433670267-30f41c4573ab?w=800"]
+      "images": ["/placeholder.jpg"]
     },
     {
       "id": "osm-10914407920",
@@ -952,7 +952,7 @@
       "products": ["bread"],
       "location": { "lat": 59.7472396, "lng": 10.612675 },
       "address": "Oslo-området",
-      "images": ["https://images.unsplash.com/photo-1517433670267-30f41c4573ab?w=800"]
+      "images": ["/placeholder.jpg"]
     },
     {
       "id": "osm-12189554833",
@@ -1096,7 +1096,7 @@
       "products": ["bread"],
       "location": { "lat": 59.9189349, "lng": 10.7407998 },
       "address": "Oslo-området",
-      "images": ["https://images.unsplash.com/photo-1517433670267-30f41c4573ab?w=800"]
+      "images": ["/placeholder.jpg"]
     },
     {
       "id": "osm-12912659362",
