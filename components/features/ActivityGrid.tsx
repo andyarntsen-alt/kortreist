@@ -23,6 +23,12 @@ const ProducerImage = memo(function ProducerImage({ src, alt }: { src: string; a
     const [hasError, setHasError] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
+    // Reset state when src changes
+    useEffect(() => {
+        setHasError(false);
+        setIsLoading(true);
+    }, [src]);
+
     const validSrc = src && src !== '/placeholder.jpg' && src !== '/placeholder-farm.jpg';
 
     if (!validSrc || hasError) {
