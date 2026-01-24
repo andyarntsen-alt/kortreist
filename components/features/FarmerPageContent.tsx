@@ -30,30 +30,32 @@ export function FarmerPageContent({ params }: { params: Promise<{ id: string }> 
 
     useEffect(() => {
         async function loadFarmer() {
-            // First check local data
+            // First show local data immediately (for fast loading)
             const localFarmer = (rawData.farmers as Farmer[]).find(f => f.id === resolvedParams.id);
             if (localFarmer) {
                 setFarmer(localFarmer);
                 setIsLoading(false);
-                return;
             }
 
-            // If not found locally, fetch from API
+            // Then fetch from API to get better data (with real images)
             try {
                 const res = await fetch('/api/farmers');
                 if (res.ok) {
                     const data = await res.json();
                     const apiFarmer = data.farmers?.find((f: Farmer) => f.id === resolvedParams.id);
                     if (apiFarmer) {
+                        // API data has priority (better images)
                         setFarmer(apiFarmer);
-                    } else {
+                    } else if (!localFarmer) {
                         setNotFound(true);
                     }
-                } else {
+                } else if (!localFarmer) {
                     setNotFound(true);
                 }
             } catch {
-                setNotFound(true);
+                if (!localFarmer) {
+                    setNotFound(true);
+                }
             }
             setIsLoading(false);
         }
