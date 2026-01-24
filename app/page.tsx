@@ -14,10 +14,12 @@ import rawData from "@/data/farmers.json";
 import { searchAndFilter } from "@/lib/search";
 import { sortByDistance } from "@/lib/geo";
 import { useGeolocation } from "@/lib/hooks/useGeolocation";
+import { useFavorites } from "@/lib/hooks/useFavorites";
 import { useDebouncedCallback } from "use-debounce";
 import { getProductLabel } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
-import { SlidersHorizontal } from "lucide-react";
+import { SlidersHorizontal, List, Map } from "lucide-react";
+import { ProducerMapView } from "@/components/features/ProducerMapView";
 
 function HomeContent() {
   const searchParams = useSearchParams();
@@ -31,7 +33,12 @@ function HomeContent() {
   const [userLocation, setUserLocation] = useState<Location | null>(null);
   const [isLoadingMore, setIsLoadingMore] = useState(true);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const [viewMode, setViewMode] = useState<"list" | "map">("list");
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
   const [apiFarmers, setApiFarmers] = useState<Farmer[]>([]);
+
+  // Favorites hook
+  const { favorites, isFavorite, toggleFavorite, favoritesCount } = useFavorites();
 
   // Local data is always available immediately
   const localFarmers = rawData.farmers as Farmer[];
@@ -125,13 +132,19 @@ function HomeContent() {
   // Memoize filtered and sorted farmers
   const filteredFarmers = useMemo(() => {
     let results = searchAndFilter(farmers, debouncedQuery, filters.products);
+
+    // Filter by favorites if enabled
+    if (showFavoritesOnly && favorites.length > 0) {
+      results = results.filter(farmer => favorites.includes(farmer.id));
+    }
+
     if (userLocation) {
       results = sortByDistance(results, userLocation);
     }
     return results;
-  }, [farmers, filters, debouncedQuery, userLocation]);
+  }, [farmers, filters, debouncedQuery, userLocation, showFavoritesOnly, favorites]);
 
-  const activeFilterCount = filters.products.length + (debouncedQuery ? 1 : 0) + (userLocation ? 1 : 0);
+  const activeFilterCount = filters.products.length + (debouncedQuery ? 1 : 0) + (userLocation ? 1 : 0) + (showFavoritesOnly ? 1 : 0);
 
   return (
     <div className="min-h-screen flex flex-col font-sans">
@@ -172,19 +185,47 @@ function HomeContent() {
               }
             </h2>
 
-            {/* Mobile Filter Button */}
-            <button
-              onClick={() => setIsMobileFilterOpen(true)}
-              className="lg:hidden flex items-center gap-2 px-3 py-2 text-sm font-bold border-2 border-black bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 touch-manipulation"
-            >
-              <SlidersHorizontal className="h-4 w-4" />
-              Filter
-              {activeFilterCount > 0 && (
-                <span className="flex items-center justify-center w-5 h-5 text-xs bg-primary rounded-full">
-                  {activeFilterCount}
-                </span>
-              )}
-            </button>
+            <div className="flex items-center gap-2">
+              {/* View Mode Toggle */}
+              <div className="hidden sm:flex border-2 border-black overflow-hidden">
+                <button
+                  onClick={() => setViewMode("list")}
+                  className={`flex items-center gap-1.5 px-3 py-2 text-sm font-bold transition-colors touch-manipulation ${
+                    viewMode === "list"
+                      ? "bg-primary text-black"
+                      : "bg-white hover:bg-gray-100"
+                  }`}
+                >
+                  <List className="h-4 w-4" />
+                  Liste
+                </button>
+                <button
+                  onClick={() => setViewMode("map")}
+                  className={`flex items-center gap-1.5 px-3 py-2 text-sm font-bold border-l-2 border-black transition-colors touch-manipulation ${
+                    viewMode === "map"
+                      ? "bg-primary text-black"
+                      : "bg-white hover:bg-gray-100"
+                  }`}
+                >
+                  <Map className="h-4 w-4" />
+                  Kart
+                </button>
+              </div>
+
+              {/* Mobile Filter Button */}
+              <button
+                onClick={() => setIsMobileFilterOpen(true)}
+                className="lg:hidden flex items-center gap-2 px-3 py-2 text-sm font-bold border-2 border-black bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 touch-manipulation"
+              >
+                <SlidersHorizontal className="h-4 w-4" />
+                Filter
+                {activeFilterCount > 0 && (
+                  <span className="flex items-center justify-center w-5 h-5 text-xs bg-primary rounded-full">
+                    {activeFilterCount}
+                  </span>
+                )}
+              </button>
+            </div>
           </div>
 
           {/* Active Filters - Mobile scrollable */}
@@ -231,7 +272,13 @@ function HomeContent() {
             <aside className="hidden lg:block lg:col-span-1">
               <div className="sticky top-20">
                 <h3 className="text-lg font-bold mb-4">Filtrer Resultater</h3>
-                <FilterSidebar filters={filters} setFilters={setFilters} />
+                <FilterSidebar
+                  filters={filters}
+                  setFilters={setFilters}
+                  showFavoritesOnly={showFavoritesOnly}
+                  onToggleFavoritesOnly={() => setShowFavoritesOnly(prev => !prev)}
+                  favoritesCount={favoritesCount}
+                />
               </div>
             </aside>
 
@@ -244,9 +291,33 @@ function HomeContent() {
                     <span className="ml-2 text-primary animate-pulse">• Laster flere...</span>
                   )}
                 </span>
+
+                {/* Mobile View Mode Toggle */}
+                <div className="flex sm:hidden border-2 border-black overflow-hidden">
+                  <button
+                    onClick={() => setViewMode("list")}
+                    className={`flex items-center gap-1 px-2 py-1.5 text-xs font-bold transition-colors touch-manipulation ${
+                      viewMode === "list"
+                        ? "bg-primary text-black"
+                        : "bg-white"
+                    }`}
+                  >
+                    <List className="h-3.5 w-3.5" />
+                  </button>
+                  <button
+                    onClick={() => setViewMode("map")}
+                    className={`flex items-center gap-1 px-2 py-1.5 text-xs font-bold border-l-2 border-black transition-colors touch-manipulation ${
+                      viewMode === "map"
+                        ? "bg-primary text-black"
+                        : "bg-white"
+                    }`}
+                  >
+                    <Map className="h-3.5 w-3.5" />
+                  </button>
+                </div>
               </div>
 
-              {/* Producer List */}
+              {/* Producer List or Map */}
               <section id="aktiviteter">
                 {filteredFarmers.length === 0 ? (
                   <div className="text-center py-8 md:py-12 border-2 border-dashed border-gray-300 rounded-xl">
@@ -255,8 +326,19 @@ function HomeContent() {
                       Prøv å fjerne noen filtre eller søk etter noe annet
                     </p>
                   </div>
+                ) : viewMode === "map" ? (
+                  <ProducerMapView
+                    farmers={filteredFarmers}
+                    userLocation={userLocation}
+                    className="h-[500px] md:h-[600px]"
+                  />
                 ) : (
-                  <ActivityGrid activities={filteredFarmers} isLoadingMore={isLoadingMore} />
+                  <ActivityGrid
+                    activities={filteredFarmers}
+                    isLoadingMore={isLoadingMore}
+                    isFavorite={isFavorite}
+                    onToggleFavorite={toggleFavorite}
+                  />
                 )}
               </section>
             </div>
@@ -284,6 +366,9 @@ function HomeContent() {
             filters={filters}
             setFilters={setFilters}
             onClose={() => setIsMobileFilterOpen(false)}
+            showFavoritesOnly={showFavoritesOnly}
+            onToggleFavoritesOnly={() => setShowFavoritesOnly(prev => !prev)}
+            favoritesCount={favoritesCount}
           />
           <button
             onClick={() => setIsMobileFilterOpen(false)}

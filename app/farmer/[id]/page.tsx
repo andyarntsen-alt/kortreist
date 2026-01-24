@@ -5,7 +5,9 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MapPin, ArrowLeft, Navigation, Globe, Phone, Store } from "lucide-react";
+import { MapPin, ArrowLeft, Navigation, Globe, Phone, Store, Heart } from "lucide-react";
+import { ShareButton } from "@/components/features/ShareButton";
+import { useFavorites } from "@/lib/hooks/useFavorites";
 import Link from "next/link";
 import rawData from "@/data/farmers.json";
 import { Farmer } from "@/types";
@@ -18,6 +20,13 @@ export default function FarmerPage({ params }: { params: Promise<{ id: string }>
     const [isLoading, setIsLoading] = useState(true);
     const [notFound, setNotFound] = useState(false);
     const [imageError, setImageError] = useState(false);
+    const [currentUrl, setCurrentUrl] = useState("");
+    const { isFavorite, toggleFavorite } = useFavorites();
+
+    // Get current URL for sharing
+    useEffect(() => {
+        setCurrentUrl(window.location.href);
+    }, []);
 
     useEffect(() => {
         async function loadFarmer() {
@@ -90,8 +99,34 @@ export default function FarmerPage({ params }: { params: Promise<{ id: string }>
         );
     }
 
+    // Generate JSON-LD structured data
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        name: farmer.name,
+        description: farmer.description,
+        address: {
+            "@type": "PostalAddress",
+            streetAddress: farmer.address,
+        },
+        geo: {
+            "@type": "GeoCoordinates",
+            latitude: farmer.location.lat,
+            longitude: farmer.location.lng,
+        },
+        ...(farmer.phone && { telephone: farmer.phone }),
+        ...(farmer.website && { url: farmer.website }),
+        ...(farmer.images[0] && !farmer.images[0].includes('placeholder') && { image: farmer.images[0] }),
+    };
+
     return (
         <div className="min-h-screen flex flex-col font-sans bg-background">
+            {/* JSON-LD Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+
             <Navbar />
 
             <main className="flex-grow container mx-auto px-4 py-8 md:py-12 max-w-4xl">
@@ -129,9 +164,28 @@ export default function FarmerPage({ params }: { params: Promise<{ id: string }>
                                 ))}
                             </div>
                             <h1 className="text-4xl font-black uppercase tracking-tight mb-2">{farmer.name}</h1>
-                            <div className="flex items-center gap-2 text-muted-foreground font-medium">
+                            <div className="flex items-center gap-2 text-muted-foreground font-medium mb-4">
                                 <MapPin className="w-5 h-5" />
                                 {farmer.address}
+                            </div>
+
+                            {/* Share and Favorite buttons */}
+                            <div className="flex items-center gap-3">
+                                <ShareButton
+                                    url={currentUrl}
+                                    title={farmer.name}
+                                    description={`Kjøp ${farmer.products.map(p => getProductLabel(p)).join(', ')} fra ${farmer.name}`}
+                                />
+                                <Button
+                                    onClick={() => toggleFavorite(farmer.id)}
+                                    variant="outline"
+                                    className={`flex items-center gap-2 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 ${
+                                        isFavorite(farmer.id) ? "bg-red-100" : ""
+                                    }`}
+                                >
+                                    <Heart className={`h-4 w-4 ${isFavorite(farmer.id) ? "fill-red-500 text-red-500" : ""}`} />
+                                    {isFavorite(farmer.id) ? "Favoritt" : "Lagre"}
+                                </Button>
                             </div>
                         </div>
 

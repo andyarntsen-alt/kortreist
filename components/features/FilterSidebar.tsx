@@ -1,6 +1,7 @@
 "use client";
 
 import { FilterState, ProductType } from "@/types";
+import { Heart } from "lucide-react";
 
 interface FilterSidebarProps {
     filters: FilterState;
@@ -8,9 +9,19 @@ interface FilterSidebarProps {
     className?: string;
     isOpen?: boolean;
     onClose?: () => void;
+    showFavoritesOnly?: boolean;
+    onToggleFavoritesOnly?: () => void;
+    favoritesCount?: number;
 }
 
-export function FilterSidebar({ filters, setFilters, className }: FilterSidebarProps) {
+export function FilterSidebar({
+    filters,
+    setFilters,
+    className,
+    showFavoritesOnly = false,
+    onToggleFavoritesOnly,
+    favoritesCount = 0,
+}: FilterSidebarProps) {
     const categories: { id: ProductType, label: string }[] = [
         { id: 'raw_milk', label: 'Råmelk' },
         { id: 'milk', label: 'Melk' },
@@ -40,6 +51,30 @@ export function FilterSidebar({ filters, setFilters, className }: FilterSidebarP
 
     return (
         <div className={`space-y-4 p-4 md:p-6 border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${className || ''}`}>
+            {/* Favorites Filter */}
+            {onToggleFavoritesOnly && (
+                <div className="pb-4 border-b-2 border-black/10">
+                    <button
+                        onClick={onToggleFavoritesOnly}
+                        className={`w-full flex items-center justify-between gap-2 p-2.5 md:p-3 text-sm font-bold border-2 border-black transition-all touch-manipulation ${
+                            showFavoritesOnly
+                                ? "bg-red-100 shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                                : "bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5"
+                        }`}
+                    >
+                        <span className="flex items-center gap-2">
+                            <Heart className={`h-4 w-4 ${showFavoritesOnly ? "fill-red-500 text-red-500" : ""}`} />
+                            Kun favoritter
+                        </span>
+                        {favoritesCount > 0 && (
+                            <span className="flex items-center justify-center min-w-[20px] h-5 text-xs bg-red-500 text-white rounded-full px-1.5">
+                                {favoritesCount}
+                            </span>
+                        )}
+                    </button>
+                </div>
+            )}
+
             <div className="flex items-center justify-between">
                 <h3 className="font-black text-base md:text-lg uppercase flex items-center gap-2">
                     <span className="w-3 h-3 md:w-4 md:h-4 bg-primary border-2 border-black"></span>

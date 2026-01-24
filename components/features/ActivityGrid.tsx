@@ -1,7 +1,7 @@
 import { Farmer } from "@/types";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Navigation, ChevronDown, Store } from "lucide-react";
+import { MapPin, Navigation, ChevronDown, Store, Heart } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { getProductLabel } from "@/lib/utils";
@@ -12,6 +12,8 @@ import { ProducerCardSkeleton } from "./ProducerCardSkeleton";
 interface ActivityGridProps {
     activities: Farmer[];
     isLoadingMore?: boolean;
+    isFavorite?: (id: string) => boolean;
+    onToggleFavorite?: (id: string) => void;
 }
 
 const ITEMS_PER_PAGE = 12;
@@ -51,8 +53,20 @@ function ProducerImage({ src, alt }: { src: string; alt: string }) {
     );
 }
 
+interface ProducerCardProps {
+    farmer: Farmer;
+    isFavorite?: boolean;
+    onToggleFavorite?: (id: string) => void;
+}
+
 // Memoize individual card to prevent re-renders
-const ProducerCard = memo(function ProducerCard({ farmer }: { farmer: Farmer }) {
+const ProducerCard = memo(function ProducerCard({ farmer, isFavorite = false, onToggleFavorite }: ProducerCardProps) {
+    const handleFavoriteClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        onToggleFavorite?.(farmer.id);
+    };
+
     return (
         <Link href={`/farmer/${farmer.id}`} className="block touch-manipulation">
             <Card className="overflow-hidden flex flex-col h-full group active:scale-[0.98] transition-transform border-2 border-black/10 hover:border-black/30">
@@ -70,6 +84,22 @@ const ProducerCard = memo(function ProducerCard({ farmer }: { farmer: Farmer }) 
                             </Badge>
                         )}
                     </div>
+
+                    {/* Favorite Button */}
+                    {onToggleFavorite && (
+                        <button
+                            onClick={handleFavoriteClick}
+                            className={`absolute top-2 right-2 md:top-3 md:right-3 p-1.5 rounded-full transition-all touch-manipulation ${
+                                isFavorite
+                                    ? "bg-red-500 text-white shadow-md"
+                                    : "bg-white/90 backdrop-blur-sm text-gray-600 hover:bg-white hover:text-red-500"
+                            } ${farmer.distance !== undefined ? "top-10 md:top-12" : ""}`}
+                            aria-label={isFavorite ? "Fjern fra favoritter" : "Legg til favoritter"}
+                        >
+                            <Heart className={`h-4 w-4 ${isFavorite ? "fill-current" : ""}`} />
+                        </button>
+                    )}
+
                     {farmer.distance !== undefined && (
                         <span className="absolute top-2 right-2 md:top-3 md:right-3 flex items-center gap-1 text-xs font-semibold text-blue-600 bg-blue-50/90 backdrop-blur-sm px-2 py-0.5 rounded-full">
                             <Navigation className="h-3 w-3" />
@@ -104,7 +134,7 @@ const ProducerCard = memo(function ProducerCard({ farmer }: { farmer: Farmer }) 
     );
 });
 
-export function ActivityGrid({ activities, isLoadingMore = false }: ActivityGridProps) {
+export function ActivityGrid({ activities, isLoadingMore = false, isFavorite, onToggleFavorite }: ActivityGridProps) {
     const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 
     const visibleActivities = activities.slice(0, visibleCount);
@@ -114,7 +144,12 @@ export function ActivityGrid({ activities, isLoadingMore = false }: ActivityGrid
         <div className="space-y-4 md:space-y-6">
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                 {visibleActivities.map((farmer) => (
-                    <ProducerCard key={farmer.id} farmer={farmer} />
+                    <ProducerCard
+                        key={farmer.id}
+                        farmer={farmer}
+                        isFavorite={isFavorite?.(farmer.id)}
+                        onToggleFavorite={onToggleFavorite}
+                    />
                 ))}
                 {isLoadingMore && Array.from({ length: 2 }).map((_, i) => (
                     <ProducerCardSkeleton key={`skeleton-${i}`} />
