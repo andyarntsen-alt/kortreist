@@ -9,10 +9,10 @@ import { ActivityGrid } from "@/components/features/ActivityGrid";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useState, useMemo, useEffect, useCallback, Suspense } from "react";
-import { FilterState, Farmer, ProductType, Location } from "@/types";
+import { FilterState, Farmer, ProductType, Location, SortOption } from "@/types";
 import rawData from "@/data/farmers.json";
 import { searchAndFilter } from "@/lib/search";
-import { sortByDistance } from "@/lib/geo";
+import { sortByDistance, filterByRadius } from "@/lib/geo";
 import { useGeolocation } from "@/lib/hooks/useGeolocation";
 import { useFavorites } from "@/lib/hooks/useFavorites";
 import { useDebouncedCallback } from "use-debounce";
@@ -35,6 +35,8 @@ function HomeContent() {
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const [viewMode, setViewMode] = useState<"list" | "map">("list");
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [radiusKm, setRadiusKm] = useState<number | null>(null);
+  const [sortBy, setSortBy] = useState<SortOption>("distance");
   const [apiFarmers, setApiFarmers] = useState<Farmer[]>([]);
 
   // Favorites hook
@@ -138,13 +140,30 @@ function HomeContent() {
       results = results.filter(farmer => favorites.includes(farmer.id));
     }
 
-    if (userLocation) {
-      results = sortByDistance(results, userLocation);
+    // Filter by radius if enabled and user location is available
+    if (userLocation && radiusKm !== null) {
+      results = filterByRadius(results, userLocation, radiusKm);
     }
-    return results;
-  }, [farmers, filters, debouncedQuery, userLocation, showFavoritesOnly, favorites]);
 
-  const activeFilterCount = filters.products.length + (debouncedQuery ? 1 : 0) + (userLocation ? 1 : 0) + (showFavoritesOnly ? 1 : 0);
+    // Apply sorting
+    switch (sortBy) {
+      case "distance":
+        if (userLocation) {
+          results = sortByDistance(results, userLocation);
+        }
+        break;
+      case "name":
+        results = [...results].sort((a, b) => a.name.localeCompare(b.name, 'nb'));
+        break;
+      case "products":
+        results = [...results].sort((a, b) => b.products.length - a.products.length);
+        break;
+    }
+
+    return results;
+  }, [farmers, filters, debouncedQuery, userLocation, showFavoritesOnly, favorites, radiusKm, sortBy]);
+
+  const activeFilterCount = filters.products.length + (debouncedQuery ? 1 : 0) + (userLocation ? 1 : 0) + (showFavoritesOnly ? 1 : 0) + (radiusKm ? 1 : 0);
 
   return (
     <div className="min-h-screen flex flex-col font-sans">
@@ -229,7 +248,7 @@ function HomeContent() {
           </div>
 
           {/* Active Filters - Mobile scrollable */}
-          {(debouncedQuery || filters.products.length > 0 || userLocation) && (
+          {(debouncedQuery || filters.products.length > 0 || userLocation || radiusKm) && (
             <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-3 -mx-4 px-4 md:mx-0 md:px-0 md:flex-wrap mb-4">
               {debouncedQuery && (
                 <span className="flex-shrink-0 inline-flex items-center gap-1 px-3 py-1.5 bg-gray-100 border border-gray-300 rounded-full text-sm">
@@ -248,6 +267,17 @@ function HomeContent() {
               {userLocation && (
                 <span className="flex-shrink-0 inline-flex items-center gap-1 px-3 py-1.5 bg-blue-100 border border-blue-300 rounded-full text-sm text-blue-700">
                   📍 Nær deg
+                </span>
+              )}
+              {radiusKm && (
+                <span className="flex-shrink-0 inline-flex items-center gap-1 px-3 py-1.5 bg-blue-100 border border-blue-300 rounded-full text-sm text-blue-700">
+                  Innen {radiusKm} km
+                  <button
+                    onClick={() => setRadiusKm(null)}
+                    className="ml-1 hover:text-red-500 touch-manipulation"
+                  >
+                    ×
+                  </button>
                 </span>
               )}
               {filters.products.map(product => (
@@ -278,6 +308,11 @@ function HomeContent() {
                   showFavoritesOnly={showFavoritesOnly}
                   onToggleFavoritesOnly={() => setShowFavoritesOnly(prev => !prev)}
                   favoritesCount={favoritesCount}
+                  radiusKm={radiusKm}
+                  onRadiusChange={setRadiusKm}
+                  hasUserLocation={!!userLocation}
+                  sortBy={sortBy}
+                  onSortChange={setSortBy}
                 />
               </div>
             </aside>
@@ -369,6 +404,11 @@ function HomeContent() {
             showFavoritesOnly={showFavoritesOnly}
             onToggleFavoritesOnly={() => setShowFavoritesOnly(prev => !prev)}
             favoritesCount={favoritesCount}
+            radiusKm={radiusKm}
+            onRadiusChange={setRadiusKm}
+            hasUserLocation={!!userLocation}
+            sortBy={sortBy}
+            onSortChange={setSortBy}
           />
           <button
             onClick={() => setIsMobileFilterOpen(false)}

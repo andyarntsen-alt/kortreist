@@ -36,3 +36,5 @@ export interface FilterState {
     products: ProductType[];
     searchQuery?: string;
 }
+
+export type SortOption = "distance" | "name" | "products";

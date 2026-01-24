@@ -36,6 +36,7 @@ export const metadata: Metadata = {
     icon: '/logo.svg',
     apple: '/logo.svg',
   },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
@@ -45,10 +46,27 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="no">
+      <head>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Kortreist" />
+        <meta name="theme-color" content="#fbbf24" />
+      </head>
       <body
         className={`${courier.variable} antialiased bg-background text-foreground`}
       >
         {children}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                  navigator.serviceWorker.register('/sw.js');
+                });
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 "use client";
 
-import { FilterState, ProductType } from "@/types";
-import { Heart } from "lucide-react";
+import { FilterState, ProductType, SortOption } from "@/types";
+import { Heart, MapPin, ArrowUpDown } from "lucide-react";
 
 interface FilterSidebarProps {
     filters: FilterState;
@@ -12,7 +12,28 @@ interface FilterSidebarProps {
     showFavoritesOnly?: boolean;
     onToggleFavoritesOnly?: () => void;
     favoritesCount?: number;
+    // Radius filter
+    radiusKm?: number | null;
+    onRadiusChange?: (radius: number | null) => void;
+    hasUserLocation?: boolean;
+    // Sorting
+    sortBy?: SortOption;
+    onSortChange?: (sort: SortOption) => void;
 }
+
+const RADIUS_OPTIONS = [
+    { value: null, label: "Alle" },
+    { value: 5, label: "5 km" },
+    { value: 10, label: "10 km" },
+    { value: 25, label: "25 km" },
+    { value: 50, label: "50 km" },
+];
+
+const SORT_OPTIONS: { value: SortOption; label: string }[] = [
+    { value: "distance", label: "Nærmest" },
+    { value: "name", label: "A-Å" },
+    { value: "products", label: "Flest produkter" },
+];
 
 export function FilterSidebar({
     filters,
@@ -21,6 +42,11 @@ export function FilterSidebar({
     showFavoritesOnly = false,
     onToggleFavoritesOnly,
     favoritesCount = 0,
+    radiusKm = null,
+    onRadiusChange,
+    hasUserLocation = false,
+    sortBy = "distance",
+    onSortChange,
 }: FilterSidebarProps) {
     const categories: { id: ProductType, label: string }[] = [
         { id: 'raw_milk', label: 'Råmelk' },
@@ -51,6 +77,65 @@ export function FilterSidebar({
 
     return (
         <div className={`space-y-4 p-4 md:p-6 border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${className || ''}`}>
+            {/* Sort Options */}
+            {onSortChange && (
+                <div className="pb-4 border-b-2 border-black/10">
+                    <h3 className="font-black text-base md:text-lg uppercase flex items-center gap-2 mb-3">
+                        <ArrowUpDown className="h-4 w-4" />
+                        Sorter
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                        {SORT_OPTIONS.map((option) => (
+                            <button
+                                key={option.value}
+                                onClick={() => onSortChange(option.value)}
+                                disabled={option.value === "distance" && !hasUserLocation}
+                                className={`px-3 py-1.5 text-sm font-bold border-2 border-black transition-all touch-manipulation ${
+                                    sortBy === option.value
+                                        ? "bg-green-100 shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                                        : option.value === "distance" && !hasUserLocation
+                                        ? "bg-gray-100 text-gray-400 cursor-not-allowed shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]"
+                                        : "bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5"
+                                }`}
+                            >
+                                {option.label}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {/* Radius Filter */}
+            {onRadiusChange && (
+                <div className="pb-4 border-b-2 border-black/10">
+                    <h3 className="font-black text-base md:text-lg uppercase flex items-center gap-2 mb-3">
+                        <MapPin className="h-4 w-4" />
+                        Avstand
+                    </h3>
+                    {!hasUserLocation ? (
+                        <p className="text-xs text-muted-foreground">
+                            Aktiver posisjon for å filtrere på avstand
+                        </p>
+                    ) : (
+                        <div className="flex flex-wrap gap-2">
+                            {RADIUS_OPTIONS.map((option) => (
+                                <button
+                                    key={option.label}
+                                    onClick={() => onRadiusChange(option.value)}
+                                    className={`px-3 py-1.5 text-sm font-bold border-2 border-black transition-all touch-manipulation ${
+                                        radiusKm === option.value
+                                            ? "bg-blue-100 shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                                            : "bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5"
+                                    }`}
+                                >
+                                    {option.label}
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            )}
+
             {/* Favorites Filter */}
             {onToggleFavoritesOnly && (
                 <div className="pb-4 border-b-2 border-black/10">

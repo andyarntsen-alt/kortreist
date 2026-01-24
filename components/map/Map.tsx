@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap, Circle } from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-cluster";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { Farmer, Location } from "@/types";
@@ -61,6 +62,30 @@ const UserIcon = L.divIcon({
     iconSize: [20, 20],
     iconAnchor: [10, 10],
 });
+
+// Custom cluster icon in neo-brutalist style
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const createClusterCustomIcon = (cluster: any) => {
+    const count = cluster.getChildCount();
+    return L.divIcon({
+        html: `<div style="
+            width: 44px;
+            height: 44px;
+            background: white;
+            border: 2px solid #000;
+            border-radius: 50%;
+            box-shadow: 3px 3px 0px 0px rgba(0,0,0,1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: monospace;
+        ">${count}</div>`,
+        className: "custom-cluster-icon",
+        iconSize: L.point(44, 44, true),
+    });
+};
 
 interface MapProps {
     activities: Farmer[];
@@ -140,38 +165,46 @@ export default function Map({
                 </>
             )}
 
-            {/* Farmer markers */}
-            {farmers.map((farmer) => (
-                <Marker
-                    key={farmer.id}
-                    position={[farmer.location.lat, farmer.location.lng]}
-                    icon={getCategoryIcon(farmer.products)}
-                >
-                    <Popup className="min-w-[200px]">
-                        <div className="flex flex-col gap-2">
-                            <h3 className="text-sm font-bold">{farmer.name}</h3>
-                            {farmer.distance !== undefined && (
-                                <span className="text-xs text-blue-600 font-semibold">
-                                    📍 {formatDistance(farmer.distance)} unna
-                                </span>
-                            )}
-                            <p className="text-xs text-gray-600 line-clamp-2">{farmer.description}</p>
-                            <div className="flex justify-between items-center mt-1 flex-wrap gap-1">
-                                {farmer.products.slice(0, 2).map(p => (
-                                    <span key={p} className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-primary/10 text-primary uppercase">
-                                        {getProductLabel(p)}
+            {/* Farmer markers with clustering */}
+            <MarkerClusterGroup
+                chunkedLoading
+                iconCreateFunction={createClusterCustomIcon}
+                maxClusterRadius={60}
+                spiderfyOnMaxZoom={true}
+                showCoverageOnHover={false}
+            >
+                {farmers.map((farmer) => (
+                    <Marker
+                        key={farmer.id}
+                        position={[farmer.location.lat, farmer.location.lng]}
+                        icon={getCategoryIcon(farmer.products)}
+                    >
+                        <Popup className="min-w-[200px]">
+                            <div className="flex flex-col gap-2">
+                                <h3 className="text-sm font-bold">{farmer.name}</h3>
+                                {farmer.distance !== undefined && (
+                                    <span className="text-xs text-blue-600 font-semibold">
+                                        📍 {formatDistance(farmer.distance)} unna
                                     </span>
-                                ))}
+                                )}
+                                <p className="text-xs text-gray-600 line-clamp-2">{farmer.description}</p>
+                                <div className="flex justify-between items-center mt-1 flex-wrap gap-1">
+                                    {farmer.products.slice(0, 2).map(p => (
+                                        <span key={p} className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-primary/10 text-primary uppercase">
+                                            {getProductLabel(p)}
+                                        </span>
+                                    ))}
+                                </div>
+                                <Link href={`/farmer/${farmer.id}`} className="w-full mt-2">
+                                    <Button size="sm" variant="secondary" className="w-full h-7 text-xs">
+                                        Se Detaljer
+                                    </Button>
+                                </Link>
                             </div>
-                            <Link href={`/farmer/${farmer.id}`} className="w-full mt-2">
-                                <Button size="sm" variant="secondary" className="w-full h-7 text-xs">
-                                    Se Detaljer
-                                </Button>
-                            </Link>
-                        </div>
-                    </Popup>
-                </Marker>
-            ))}
+                        </Popup>
+                    </Marker>
+                ))}
+            </MarkerClusterGroup>
         </MapContainer>
     );
 }
