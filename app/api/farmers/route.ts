@@ -5,9 +5,9 @@ import { Farmer, ProductType } from "@/types";
 const OVERPASS_URL = "https://overpass-api.de/api/interpreter";
 const OSLO_BBOX = "(59.6,10.4,60.15,11.2)";
 
-// Cache for merged data (short duration since sources have their own caches)
+// Cache for merged data (1 hour to reduce API calls)
 let mergedCache: { farmers: Farmer[]; timestamp: number } | null = null;
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+const CACHE_DURATION = 60 * 60 * 1000; // 1 hour
 
 async function fetchFromOSM(): Promise<Farmer[]> {
     const query = `
@@ -122,6 +122,10 @@ export async function GET() {
                 farmers: mergedCache.farmers,
                 count: mergedCache.farmers.length,
                 source: "cache"
+            }, {
+                headers: {
+                    'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+                }
             });
         }
 
@@ -156,6 +160,10 @@ export async function GET() {
             sources: {
                 osm: osmFarmers.length,
                 bondensmarked: bmFarmers.length
+            }
+        }, {
+            headers: {
+                'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
             }
         });
     } catch (error) {
