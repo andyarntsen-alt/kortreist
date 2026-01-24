@@ -1,30 +1,38 @@
 import { NextResponse } from "next/server";
 import { Farmer, ProductType } from "@/types";
 
-// Oslo og Akershus bounding box
 const OVERPASS_URL = "https://overpass-api.de/api/interpreter";
-const OSLO_BBOX = "(59.6,10.4,60.15,11.2)";
+
+// Regioner med bounding boxes
+const REGIONS = {
+    oslo: { bbox: "(59.6,10.4,60.15,11.2)", name: "Oslo-området" },
+    trondheim: { bbox: "(63.35,10.2,63.5,10.55)", name: "Trondheim-området" },
+    bergen: { bbox: "(60.3,5.2,60.45,5.45)", name: "Bergen-området" },
+    stavanger: { bbox: "(58.9,5.6,59.05,5.85)", name: "Stavanger-området" },
+    kristiansand: { bbox: "(58.1,7.9,58.2,8.15)", name: "Kristiansand-området" },
+    tromsø: { bbox: "(69.6,18.85,69.7,19.1)", name: "Tromsø-området" },
+};
 
 // Cache for merged data (1 hour to reduce API calls)
 let mergedCache: { farmers: Farmer[]; timestamp: number } | null = null;
 const CACHE_DURATION = 60 * 60 * 1000; // 1 hour
 
-async function fetchFromOSM(): Promise<Farmer[]> {
+async function fetchFromOSMRegion(regionKey: string, region: { bbox: string; name: string }): Promise<Farmer[]> {
     const query = `
         [out:json][timeout:25];
         (
-          node["shop"="farm"]${OSLO_BBOX};
-          node["shop"="dairy"]${OSLO_BBOX};
-          node["shop"="butcher"]${OSLO_BBOX};
-          node["shop"="greengrocer"]${OSLO_BBOX};
-          node["shop"="honey"]${OSLO_BBOX};
-          node["shop"="cheese"]${OSLO_BBOX};
-          node["shop"="fish"]${OSLO_BBOX};
-          node["shop"="seafood"]${OSLO_BBOX};
-          node["craft"="beekeeper"]${OSLO_BBOX};
-          node["amenity"="marketplace"]${OSLO_BBOX};
-          node["shop"="bakery"]${OSLO_BBOX};
-          node["shop"="deli"]${OSLO_BBOX};
+          node["shop"="farm"]${region.bbox};
+          node["shop"="dairy"]${region.bbox};
+          node["shop"="butcher"]${region.bbox};
+          node["shop"="greengrocer"]${region.bbox};
+          node["shop"="honey"]${region.bbox};
+          node["shop"="cheese"]${region.bbox};
+          node["shop"="fish"]${region.bbox};
+          node["shop"="seafood"]${region.bbox};
+          node["craft"="beekeeper"]${region.bbox};
+          node["amenity"="marketplace"]${region.bbox};
+          node["shop"="bakery"]${region.bbox};
+          node["shop"="deli"]${region.bbox};
         );
         out body;
     `;
@@ -75,23 +83,36 @@ async function fetchFromOSM(): Promise<Farmer[]> {
             farmers.push({
                 id: `osm-${element.id}`,
                 name: tags.name || "Lokal Gård",
-                description: tags.description || tags.note || "Lokal gård med ferske varer.",
+                description: tags.description || tags.note || "Lokal produsent med ferske varer.",
                 products: Array.from(new Set(products)),
                 location: { lat: element.lat, lng: element.lon },
                 address: tags["addr:street"]
-                    ? `${tags["addr:street"]} ${tags["addr:housenumber"] || ""}, ${tags["addr:city"] || "Oslo"}`.trim()
-                    : "Oslo-området",
+                    ? `${tags["addr:street"]} ${tags["addr:housenumber"] || ""}, ${tags["addr:city"] || region.name.replace("-området", "")}`.trim()
+                    : region.name,
                 images: ["/placeholder.jpg"]
             });
         }
     }
 
-    console.log(`OSM returned ${farmers.length} farmers`);
+    console.log(`OSM ${regionKey} returned ${farmers.length} farmers`);
     return farmers;
     } catch (error) {
-        console.error("OSM fetch error:", error);
+        console.error(`OSM ${regionKey} fetch error:`, error);
         return [];
     }
+}
+
+async function fetchFromOSM(): Promise<Farmer[]> {
+    // Fetch from all regions in parallel
+    const regionEntries = Object.entries(REGIONS);
+    const results = await Promise.all(
+        regionEntries.map(([key, region]) => fetchFromOSMRegion(key, region).catch(() => []))
+    );
+
+    // Flatten results
+    const allFarmers = results.flat();
+    console.log(`OSM total: ${allFarmers.length} farmers from ${regionEntries.length} regions`);
+    return allFarmers;
 }
 
 async function fetchFromBondensMarked(): Promise<Farmer[]> {
