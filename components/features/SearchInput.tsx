@@ -140,6 +140,8 @@ export function SearchInput({
             <Search className="absolute left-3 md:left-4 top-1/2 h-4 w-4 md:h-5 md:w-5 -translate-y-1/2 text-black z-10" />
             <Input
                 ref={inputRef}
+                id="search-producer"
+                name="search-producer"
                 placeholder="Søk produsent..."
                 className="pl-10 md:pl-12 h-12 md:h-14 text-base md:text-lg font-bold border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] md:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-none focus:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] touch-manipulation"
                 value={value}

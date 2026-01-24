@@ -314,6 +314,7 @@ function HomeContent() {
                   sortBy={sortBy}
                   onSortChange={setSortBy}
                   onRequestLocation={requestLocation}
+                  idPrefix="desktop"
                 />
               </div>
             </aside>
@@ -411,6 +412,7 @@ function HomeContent() {
             sortBy={sortBy}
             onSortChange={setSortBy}
             onRequestLocation={requestLocation}
+            idPrefix="mobile"
           />
           <button
             onClick={() => setIsMobileFilterOpen(false)}

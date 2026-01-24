@@ -20,6 +20,8 @@ interface FilterSidebarProps {
     sortBy?: SortOption;
     onSortChange?: (sort: SortOption) => void;
     onRequestLocation?: () => void;
+    // Unique ID prefix to avoid duplicate IDs when rendered multiple times
+    idPrefix?: string;
 }
 
 const RADIUS_OPTIONS = [
@@ -49,6 +51,7 @@ export function FilterSidebar({
     sortBy = "distance",
     onSortChange,
     onRequestLocation,
+    idPrefix = "desktop",
 }: FilterSidebarProps) {
     const categories: { id: ProductType, label: string }[] = [
         { id: 'raw_milk', label: 'Råmelk' },
@@ -193,8 +196,8 @@ export function FilterSidebar({
                             <div className={`relative w-5 h-5 md:w-6 md:h-6 border-2 border-black bg-white flex items-center justify-center flex-shrink-0`}>
                                 <input
                                     type="checkbox"
-                                    id={`filter-${cat.id}`}
-                                    name={`filter-${cat.id}`}
+                                    id={`${idPrefix}-filter-${cat.id}`}
+                                    name={`${idPrefix}-filter-${cat.id}`}
                                     className="peer appearance-none w-full h-full cursor-pointer"
                                     checked={isSelected}
                                     onChange={() => toggleCategory(cat.id)}
