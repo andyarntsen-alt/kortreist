@@ -115,26 +115,6 @@ async function fetchFromOSM(): Promise<Farmer[]> {
     return allFarmers;
 }
 
-async function fetchFromBondensMarked(): Promise<Farmer[]> {
-    try {
-        const baseUrl = process.env.VERCEL_URL
-            ? `https://${process.env.VERCEL_URL}`
-            : "http://localhost:3000";
-
-        const response = await fetch(`${baseUrl}/api/scrape/bondensmarked`, {
-            cache: "no-store" // Always get fresh data, scraper has its own cache
-        });
-
-        if (!response.ok) return [];
-
-        const data = await response.json();
-        return data.farmers || [];
-    } catch (error) {
-        console.error("Bondens Marked fetch error:", error);
-        return [];
-    }
-}
-
 export async function GET() {
     try {
         // Check cache
@@ -150,21 +130,15 @@ export async function GET() {
             });
         }
 
-        // Fetch from all sources in parallel
-        // OSM: Open Database License (ODbL) - allows commercial use with attribution
-        // Bondens Marked: Public producer information
-        const [osmFarmers, bmFarmers] = await Promise.all([
-            fetchFromOSM().catch(() => []),
-            fetchFromBondensMarked().catch(() => [])
-        ]);
+        // Fetch only from OSM (fast, no timeout issues)
+        // Bondens Marked data is pre-scraped and included in farmers.json
+        const osmFarmers = await fetchFromOSM().catch(() => []);
 
-        // Merge and deduplicate by name similarity
-        // Priority: Bondens Marked first (has images), then OSM
-        const allFarmers = [...bmFarmers, ...osmFarmers];
+        // Deduplicate by name
         const seen = new Set<string>();
         const uniqueFarmers: Farmer[] = [];
 
-        for (const farmer of allFarmers) {
+        for (const farmer of osmFarmers) {
             const normalizedName = farmer.name.toLowerCase().replace(/[^a-zæøå0-9]/g, "");
             if (!seen.has(normalizedName)) {
                 seen.add(normalizedName);
@@ -181,10 +155,7 @@ export async function GET() {
         return NextResponse.json({
             farmers: uniqueFarmers,
             count: uniqueFarmers.length,
-            sources: {
-                bondensmarked: bmFarmers.length,
-                osm: osmFarmers.length
-            }
+            source: "osm"
         }, {
             headers: {
                 'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
