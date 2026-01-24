@@ -135,26 +135,6 @@ async function fetchFromBondensMarked(): Promise<Farmer[]> {
     }
 }
 
-async function fetchFromHanen(): Promise<Farmer[]> {
-    try {
-        const baseUrl = process.env.VERCEL_URL
-            ? `https://${process.env.VERCEL_URL}`
-            : "http://localhost:3000";
-
-        const response = await fetch(`${baseUrl}/api/scrape/hanen`, {
-            cache: "no-store"
-        });
-
-        if (!response.ok) return [];
-
-        const data = await response.json();
-        return data.farmers || [];
-    } catch (error) {
-        console.error("HANEN fetch error:", error);
-        return [];
-    }
-}
-
 export async function GET() {
     try {
         // Check cache
@@ -171,15 +151,16 @@ export async function GET() {
         }
 
         // Fetch from all sources in parallel
-        const [osmFarmers, bmFarmers, hanenFarmers] = await Promise.all([
+        // OSM: Open Database License (ODbL) - allows commercial use with attribution
+        // Bondens Marked: Public producer information
+        const [osmFarmers, bmFarmers] = await Promise.all([
             fetchFromOSM().catch(() => []),
-            fetchFromBondensMarked().catch(() => []),
-            fetchFromHanen().catch(() => [])
+            fetchFromBondensMarked().catch(() => [])
         ]);
 
         // Merge and deduplicate by name similarity
-        // Priority: HANEN first (best data), then Bondens Marked, then OSM
-        const allFarmers = [...hanenFarmers, ...bmFarmers, ...osmFarmers];
+        // Priority: Bondens Marked first (has images), then OSM
+        const allFarmers = [...bmFarmers, ...osmFarmers];
         const seen = new Set<string>();
         const uniqueFarmers: Farmer[] = [];
 
@@ -201,7 +182,6 @@ export async function GET() {
             farmers: uniqueFarmers,
             count: uniqueFarmers.length,
             sources: {
-                hanen: hanenFarmers.length,
                 bondensmarked: bmFarmers.length,
                 osm: osmFarmers.length
             }

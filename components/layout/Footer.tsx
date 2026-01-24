@@ -37,8 +37,11 @@ export function Footer() {
                     </div>
                 </div>
 
-                <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t-2 border-black border-dashed flex flex-col sm:flex-row justify-between items-center gap-2 text-xs font-bold uppercase safe-bottom">
+                <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t-2 border-black border-dashed flex flex-col sm:flex-row justify-between items-center gap-3 text-xs font-bold uppercase safe-bottom">
                     <span>&copy; {new Date().getFullYear()} Kortreist Mat</span>
+                    <span className="text-center normal-case font-medium">
+                        Kartdata fra <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">OpenStreetMap</a>
+                    </span>
                     <span className="text-center">Laget med ♥ for god mat</span>
                 </div>
             </div>
