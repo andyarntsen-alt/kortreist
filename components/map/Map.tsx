@@ -10,21 +10,42 @@ import Link from "next/link";
 import { getProductLabel } from "@/lib/utils";
 import { formatDistance } from "@/lib/geo";
 
-// Fix for default Leaflet markers in Next.js
-const iconUrl = "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png";
-const iconRetinaUrl = "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png";
-const shadowUrl = "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png";
+// Category emoji mapping
+const categoryEmojis: Record<string, string> = {
+    milk: "🥛",
+    honey: "🍯",
+    eggs: "🥚",
+    meat: "🥩",
+    vegetables: "🥬",
+    cheese: "🧀",
+    fish: "🐟",
+    bread: "🍞",
+};
 
-const DefaultIcon = L.icon({
-    iconUrl,
-    iconRetinaUrl,
-    shadowUrl,
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    tooltipAnchor: [16, -28],
-    shadowSize: [41, 41],
-});
+// Create a category icon for a farmer based on their primary product
+function getCategoryIcon(products: string[]): L.DivIcon {
+    const primaryProduct = products[0] || "vegetables";
+    const emoji = categoryEmojis[primaryProduct] || "🌾";
+
+    return L.divIcon({
+        className: "category-marker",
+        html: `<div style="
+            width: 36px;
+            height: 36px;
+            background: white;
+            border: 2px solid #000;
+            border-radius: 50%;
+            box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        ">${emoji}</div>`,
+        iconSize: [36, 36],
+        iconAnchor: [18, 18],
+        popupAnchor: [0, -18],
+    });
+}
 
 // User location icon (blue dot)
 const UserIcon = L.divIcon({
@@ -40,8 +61,6 @@ const UserIcon = L.divIcon({
     iconSize: [20, 20],
     iconAnchor: [10, 10],
 });
-
-L.Marker.prototype.options.icon = DefaultIcon;
 
 interface MapProps {
     activities: Farmer[];
@@ -126,6 +145,7 @@ export default function Map({
                 <Marker
                     key={farmer.id}
                     position={[farmer.location.lat, farmer.location.lng]}
+                    icon={getCategoryIcon(farmer.products)}
                 >
                     <Popup className="min-w-[200px]">
                         <div className="flex flex-col gap-2">
