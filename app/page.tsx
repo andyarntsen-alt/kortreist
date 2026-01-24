@@ -188,7 +188,7 @@ function HomeContent() {
           </div>
         )}
 
-        <StatsBanner farmerCount={farmers.length} />
+        <StatsBanner farmerCount={localFarmers.length} />
 
         <WhySection />
 

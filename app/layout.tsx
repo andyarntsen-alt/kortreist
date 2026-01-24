@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Courier_Prime } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const courier = Courier_Prime({
@@ -56,6 +57,7 @@ export default function RootLayout({
         className={`${courier.variable} antialiased bg-background text-foreground`}
       >
         {children}
+        <Analytics />
         <script
           dangerouslySetInnerHTML={{
             __html: `
