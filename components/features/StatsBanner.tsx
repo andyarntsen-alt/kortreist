@@ -16,7 +16,7 @@ export function StatsBanner({ farmerCount }: StatsBannerProps) {
                     <div className="hidden sm:block text-muted-foreground">|</div>
                     <div className="flex items-center gap-2">
                         <span className="text-2xl md:text-3xl font-black text-[#FFD700]">Oslo</span>
-                        <span className="font-mono text-sm md:text-base">& omegn</span>
+                        <span className="font-mono text-sm md:text-base">& omegn · utvider snart!</span>
                     </div>
                     <div className="hidden sm:block text-muted-foreground">|</div>
                     <div className="flex items-center gap-2">
