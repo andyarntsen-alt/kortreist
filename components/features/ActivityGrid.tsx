@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { getProductLabel } from "@/lib/utils";
 import { formatDistance } from "@/lib/geo";
-import { useState, memo, useEffect, useRef, useCallback } from "react";
+import { useState, memo, useEffect } from "react";
 import { ProducerCardSkeleton } from "./ProducerCardSkeleton";
 
 interface ActivityGridProps {
@@ -145,7 +145,6 @@ const ProducerCard = memo(function ProducerCard({ farmer, isFavorite = false, on
 
 export function ActivityGrid({ activities, isLoadingMore = false, isFavorite, onToggleFavorite }: ActivityGridProps) {
     const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
-    const loadMoreRef = useRef<HTMLDivElement>(null);
 
     const visibleActivities = activities.slice(0, visibleCount);
     const hasMore = visibleCount < activities.length;
@@ -154,36 +153,6 @@ export function ActivityGrid({ activities, isLoadingMore = false, isFavorite, on
     useEffect(() => {
         setVisibleCount(ITEMS_PER_PAGE);
     }, [activities.length]);
-
-    // Load more callback
-    const loadMore = useCallback(() => {
-        if (hasMore) {
-            setVisibleCount(prev => prev + ITEMS_PER_PAGE);
-        }
-    }, [hasMore]);
-
-    // Intersection Observer for infinite scroll
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                if (entries[0].isIntersecting && hasMore) {
-                    loadMore();
-                }
-            },
-            { threshold: 0.1, rootMargin: '100px' }
-        );
-
-        const currentRef = loadMoreRef.current;
-        if (currentRef) {
-            observer.observe(currentRef);
-        }
-
-        return () => {
-            if (currentRef) {
-                observer.unobserve(currentRef);
-            }
-        };
-    }, [hasMore, loadMore]);
 
     return (
         <div className="space-y-4 md:space-y-6">
@@ -201,11 +170,11 @@ export function ActivityGrid({ activities, isLoadingMore = false, isFavorite, on
                 ))}
             </div>
 
-            {/* Infinite scroll trigger + fallback button */}
+            {/* Load more button */}
             {hasMore && (
-                <div ref={loadMoreRef} className="flex justify-center pt-2 md:pt-4">
+                <div className="flex justify-center pt-2 md:pt-4">
                     <Button
-                        onClick={loadMore}
+                        onClick={() => setVisibleCount(prev => prev + ITEMS_PER_PAGE)}
                         variant="outline"
                         className="h-11 md:h-12 px-6 text-sm md:text-base border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] md:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 touch-manipulation"
                     >
