@@ -116,27 +116,24 @@ async function scrapeProducers(): Promise<Farmer[]> {
     const allProducerLinks: { name: string; url: string; description: string; cardImage: string | null; region: string }[] = [];
 
     try {
-        // Also fetch the main producers page (no filter) to catch any missed producers
+        // Fetch all region pages in PARALLEL for speed (Vercel has 10s timeout)
         const mainUrls = [
             `${BASE_URL}/produsenter`, // All producers
             ...LOKALLAG_IDS.map(id => `${BASE_URL}/produsenter?lokallag=${id}`)
         ];
 
-        for (const url of mainUrls) {
+        const fetchPage = async (url: string) => {
             const lokallagId = url.includes("lokallag=") ? url.split("lokallag=")[1] : "all";
             try {
                 const response = await fetch(url, {
-                    headers: {
-                        "User-Agent": "KortreistMat/1.0 (https://kortreistmat.no)"
-                    }
+                    headers: { "User-Agent": "KortreistMat/1.0 (https://kortreistmat.no)" }
                 });
-
-                if (!response.ok) continue;
+                if (!response.ok) return [];
 
                 const html = await response.text();
                 const $ = cheerio.load(html);
+                const links: typeof allProducerLinks = [];
 
-                // Find all producer links
                 $('a[href^="/produsent/"]').each((_, element) => {
                     const $el = $(element);
                     const href = $el.attr("href");
@@ -144,59 +141,42 @@ async function scrapeProducers(): Promise<Farmer[]> {
                         $el.text().trim().split("\n")[0].trim();
 
                     if (href && name && name.length > 2) {
-                        const description = $el.find("p").first().text().trim() || "";
-
                         let cardImage: string | null = null;
                         const imgSrc = $el.find("img").attr("src");
                         if (imgSrc && imgSrc.includes("cloudinary")) {
                             cardImage = imgSrc.replace(/h_\d+/, "h_600").replace(/w_\d+/, "w_800");
                         }
 
-                        allProducerLinks.push({
+                        links.push({
                             name,
                             url: `${BASE_URL}${href}`,
-                            description,
+                            description: $el.find("p").first().text().trim() || "",
                             cardImage,
                             region: `lokallag-${lokallagId}`
                         });
                     }
                 });
-
-                // Small delay between regions to be polite
-                await new Promise(resolve => setTimeout(resolve, 300));
-            } catch (err) {
-                console.error(`Error fetching lokallag ${lokallagId}:`, err);
+                return links;
+            } catch {
+                return [];
             }
-        }
+        };
+
+        // Fetch all pages in parallel
+        const results = await Promise.all(mainUrls.map(fetchPage));
+        results.forEach(links => allProducerLinks.push(...links));
 
         // Remove duplicates by URL
         const uniqueProducers = allProducerLinks.filter((p, i, arr) =>
             arr.findIndex(x => x.url === p.url) === i
         );
 
-        console.log(`Found ${uniqueProducers.length} unique producers from Bondens Marked (all regions)`);
+        console.log(`Found ${uniqueProducers.length} unique producers from Bondens Marked`);
 
-        // Process each producer (with rate limiting)
+        // Process producers - use card data only, skip detail page fetches for speed
         for (const producer of uniqueProducers) {
             const id = producer.url.split("/").pop() || `bm-${Date.now()}`;
-
-            // Use card image if available, otherwise fetch from detail page
-            let image = producer.cardImage;
-            let detailDescription: string | null = null;
-            let address: string | null = null;
-
-            // Only fetch detail page if no card image (to save time)
-            if (!image) {
-                const details = await fetchProducerDetails(producer.url);
-                image = details.image;
-                detailDescription = details.description;
-                address = details.address;
-                // Rate limit only when fetching detail pages
-                await new Promise(resolve => setTimeout(resolve, 200));
-            }
-
-            // Infer products from name and description
-            const products = inferProducts(`${producer.name} ${producer.description} ${detailDescription || ""}`);
+            const products = inferProducts(`${producer.name} ${producer.description}`);
 
             // Add slight randomization to prevent overlapping markers
             const location = {
@@ -204,17 +184,16 @@ async function scrapeProducers(): Promise<Farmer[]> {
                 lng: OSLO_CENTER.lng + (Math.random() - 0.5) * 0.1
             };
 
-            // Clean up the name (remove description if it was concatenated)
             const cleanName = producer.name.split(/\s{2,}/)[0].trim();
 
             farmers.push({
                 id: `bm-${id}`,
                 name: cleanName,
-                description: detailDescription || producer.description || `Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.`,
+                description: producer.description || `Lokal produsent fra Bondens Marked. Kvalitetsprodukter direkte fra gården.`,
                 products,
                 location,
-                address: address || "Oslo-området",
-                images: image ? [image] : ["/placeholder-farm.jpg"]
+                address: "Oslo-området",
+                images: producer.cardImage ? [producer.cardImage] : ["/placeholder-farm.jpg"]
             });
         }
 
