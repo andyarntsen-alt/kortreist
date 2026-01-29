@@ -15,19 +15,28 @@ export const metadata: Metadata = {
   keywords: ["lokalmat", "bonde", "råmelk", "honning", "gårdsbutikk", "oslo", "kortreist", "fersk mat"],
   authors: [{ name: "Kortreist Mat" }],
   creator: "Kortreist Mat",
-  metadataBase: new URL('https://kortreist.vercel.app'),
+  metadataBase: new URL('https://karthvaskjer.vercel.app'),
   openGraph: {
     type: 'website',
     locale: 'nb_NO',
-    url: 'https://kortreist.vercel.app',
+    url: 'https://karthvaskjer.vercel.app',
     siteName: 'Kortreist Mat',
     title: 'Kortreist Mat - Finn lokal mat nær deg',
     description: 'Dropp de dyre dagligvarekjedene. Finn råmelk, lokalhonning, hjemmebakt brød og ferskt kjøtt direkte fra bonden.',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Kortreist Mat - Finn lokal mat nær deg',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Kortreist Mat - Finn lokal mat nær deg',
     description: 'Dropp de dyre dagligvarekjedene. Finn råmelk, lokalhonning, hjemmebakt brød og ferskt kjøtt direkte fra bonden.',
+    images: ['/opengraph-image'],
   },
   robots: {
     index: true,
