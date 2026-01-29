@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description: 'Dropp de dyre dagligvarekjedene. Finn råmelk, lokalhonning, hjemmebakt brød og ferskt kjøtt direkte fra bonden.',
     images: [
       {
-        url: '/opengraph-image',
+        url: 'https://kortreist-inky.vercel.app/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'Kortreist Mat - Finn lokal mat nær deg',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Kortreist Mat - Finn lokal mat nær deg',
     description: 'Dropp de dyre dagligvarekjedene. Finn råmelk, lokalhonning, hjemmebakt brød og ferskt kjøtt direkte fra bonden.',
-    images: ['/opengraph-image'],
+    images: ['https://kortreist-inky.vercel.app/opengraph-image'],
   },
   robots: {
     index: true,
